@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Header scroll effect
+    // Header scroll effect - PASSIVE LISTENER
     const header = document.getElementById('mainHeader');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             header.classList.remove('scrolled');
         }
-    });
+    }, { passive: true });
 
     // Mobile menu toggle
     const hamburgerBtn = document.getElementById('hamburger-btn');
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // TESTIMONIAL CAROUSEL
+    // TESTIMONIAL CAROUSEL - OPTIMIZADO
     const slider = document.querySelector('.testimonial-slider');
     if (slider) {
         const slides = Array.from(slider.children);
@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let intervalId;
         let slidesPerView = 1;
 
-        // Siempre crear 4 puntos de paginación
         const createPaginationDots = () => {
             paginationContainer.innerHTML = '';
             const totalDots = 4;
@@ -61,17 +60,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
-        // Actualizar puntos activos
         const updatePagination = () => {
             const dots = paginationContainer.querySelectorAll('.pagination-dot');
             const currentPage = Math.floor(currentIndex);
             
             dots.forEach((dot, index) => {
-                if (index === currentPage) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
+                dot.classList[index === currentPage ? 'add' : 'remove']('active');
             });
         };
 
@@ -88,7 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const showSlide = (index) => {
             const slideWidth = 100 / slidesPerView;
-            slider.style.transform = 'translateX(' + (-index * slideWidth) + '%)';
+            // Usar transform con will-change para mejor performance
+            slider.style.transform = `translateX(${-index * slideWidth}%)`;
             updatePagination();
         };
 
@@ -124,14 +119,54 @@ document.addEventListener('DOMContentLoaded', function() {
             startAutoSlide();
         });
 
+        // RESIZE LISTENER PASIVO
         window.addEventListener('resize', () => {
             updateSlidesPerView();
             showSlide(currentIndex);
-        });
+        }, { passive: true });
         
         updateSlidesPerView();
         startAutoSlide();
     }
+
+    // GOOGLE MAPS LAZY LOAD AUTOMÁTICO CON INTERSECTION OBSERVER
+    const initLazyMaps = () => {
+        const mapContainers = document.querySelectorAll('.map-lazy-container');
+        
+        if ('IntersectionObserver' in window) {
+            const mapObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const container = entry.target;
+                        const mapSrc = container.dataset.mapSrc;
+                        
+                        const iframe = document.createElement('iframe');
+                        iframe.src = mapSrc;
+                        iframe.width = '600';
+                        iframe.height = '450';
+                        iframe.style.border = '0';
+                        iframe.allowFullscreen = true;
+                        iframe.loading = 'lazy';
+                        iframe.referrerPolicy = 'no-referrer-when-downgrade';
+                        iframe.title = 'Ubicación de la consulta de Javi Cáceres en Roses';
+                        
+                        container.innerHTML = '';
+                        container.appendChild(iframe);
+                        mapObserver.unobserve(container);
+                    }
+                });
+            }, { rootMargin: '200px' });
+            
+            mapContainers.forEach(container => mapObserver.observe(container));
+        } else {
+            // Fallback para navegadores antiguos
+            mapContainers.forEach(container => {
+                const iframe = document.createElement('iframe');
+                iframe.src = container.dataset.mapSrc;
+                container.appendChild(iframe);
+            });
+        }
+    };
 
     // COOKIE CONSENT BANNER
     const cookieBanner = document.getElementById('cookie-banner');
@@ -151,23 +186,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function setCookie(name, value, days) {
-        let expires = "";
-        if (days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
     }
 
     function getCookie(name) {
-        const nameEQ = name + "=";
+        const nameEQ = `${name}=`;
         const ca = document.cookie.split(';');
         for(let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            let c = ca[i].trim();
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
         }
         return null;
     }
+
+    // Inicializar lazy load de mapas
+    initLazyMaps();
 });
