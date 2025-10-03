@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Bloquear acceso a carpetas de recursos si no quieres que se indexen directamente
+Disallow: /css/
+Disallow: /js/
+
+# Sitemap
+Sitemap: https://www.jcacerespsicologo.com/sitemap.xml

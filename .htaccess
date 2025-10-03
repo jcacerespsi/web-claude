@@ -1,0 +1,58 @@
+# REDIRECCIÓN HTTPS (forzar conexión segura)
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# REDIRECCIÓN WWW (unificar con www)
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+
+# COMPRESIÓN GZIP (reduce tamaño de archivos)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# CACHE DEL NAVEGADOR (mejora velocidad en visitas repetidas)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Imágenes - 1 año
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  
+  # CSS y JavaScript - 1 mes
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  
+  # HTML - 1 día
+  ExpiresByType text/html "access plus 1 day"
+  
+  # Fuentes
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# SEGURIDAD - Headers de protección
+<IfModule mod_headers.c>
+  # Prevenir clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+  
+  # Prevenir XSS
+  Header always set X-XSS-Protection "1; mode=block"
+  
+  # Prevenir MIME sniffing
+  Header always set X-Content-Type-Options "nosniff"
+  
+  # Referrer Policy
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# BLOQUEAR ACCESO A ARCHIVOS SENSIBLES
+<FilesMatch "^\.">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# PÁGINA DE ERROR 404 personalizada (opcional)
+ErrorDocument 404 /index.html
