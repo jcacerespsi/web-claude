@@ -332,8 +332,6 @@ section#especializacion .grid-2 > a {
 }
 
 .icon {
-    width: 1em;
-    height: 1em;
     vertical-align: middle;
 }
 
@@ -346,8 +344,6 @@ section#especializacion .grid-2 > a {
 }
 
 .rating .icon {
-    width: 1.1em;
-    height: 1.1em;
     vertical-align: middle;
     line-height: 1;
 }
