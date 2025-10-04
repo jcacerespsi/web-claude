@@ -2,6 +2,8 @@
 :root {
     --accent-empathy: #D97757;
     --accent-wisdom: #6B7A99;
+    --primary: var(--accent-wisdom);
+    --earth: var(--accent-empathy);
     --text-strongest: #2D3748;
     --text-strong: #4A5568;
     --text-medium: #6C7A90;
@@ -335,6 +337,14 @@ section#especializacion .grid-2 > a {
     vertical-align: middle;
 }
 
+.text-primary {
+    color: var(--primary);
+}
+
+.text-earth {
+    color: var(--earth);
+}
+
 .rating .icon {
     width: 1.1em;
     height: 1.1em;
@@ -346,13 +356,13 @@ section#especializacion .grid-2 > a {
 .info-card .icon-wrapper,
 .content-card .icon-wrapper {
     font-size: 2rem;
-    color: var(--accent-wisdom);
+    color: var(--primary);
     margin-bottom: 1.5rem;
     opacity: 0.9;
 }
 
 .specialization-card .icon-wrapper {
-    color: var(--accent-empathy);
+    color: var(--earth);
 }
 
 .btn-primary .icon {
@@ -456,7 +466,7 @@ section#especializacion .grid-2 > a {
 }
 
 .tarifa-card li .icon {
-    color: var(--accent-empathy);
+    color: var(--earth);
     margin-right: 0.5rem;
 }
 
@@ -514,7 +524,7 @@ section#especializacion .grid-2 > a {
     transform: translateY(-50%);
     background-color: var(--white);
     border: 1px solid var(--bg-subtle);
-    color: var(--accent-wisdom);
+    color: var(--primary);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -634,7 +644,7 @@ section#especializacion .grid-2 > a {
 
 .faq-question .icon {
     transition: transform 0.3s ease, color 0.3s ease;
-    color: var(--accent-wisdom);
+    color: var(--primary);
 }
 
 .faq-answer {
@@ -651,7 +661,7 @@ section#especializacion .grid-2 > a {
 
 .faq-item.active .faq-question .icon {
     transform: rotate(180deg);
-    color: var(--accent-empathy);
+    color: var(--earth);
 }
 
 .faq-item.active .faq-answer {
