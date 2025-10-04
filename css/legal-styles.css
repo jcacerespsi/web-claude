@@ -1,182 +1,6 @@
-.icon {
-    width: 1em;
-    height: 1em;
-    vertical-align: middle;
-}
+@import url('./base.css');
 
-.text-primary {
-    color: var(--primary);
-}
-
-.text-earth {
-    color: var(--earth);
-}
-
-/* ESTILOS PARA PÁGINAS LEGALES */
-:root {
-    --accent-empathy: #D97757;
-    --accent-wisdom: #6B7A99;
-    --primary: var(--accent-wisdom);
-    --earth: var(--accent-empathy);
-    --text-strongest: #2D3748;
-    --text-strong: #4A5568;
-    --text-medium: #6C7A90;
-    --bg-subtle: #E4E7EB;
-    --bg-lighter: #F1F0EC;
-    --bg-main: #F9F9F7;
-    --white: #FFFFFF;
-    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.04);
-    --shadow-md: 0 2px 8px -2px rgb(0 0 0 / 0.08);
-    --shadow-lg: 0 8px 24px -4px rgb(0 0 0 / 0.12);
-    --border-width: 1px;
-    --radius: 12px;
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-main);
-    color: var(--text-strong);
-    line-height: 1.7;
-    font-size: 17px;
-}
-
-.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
-
-h1, h2, h3, h4 {
-    color: var(--text-strongest);
-    line-height: 1.25;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-}
-h1 { font-size: clamp(2.4rem, 5vw, 3.2rem); }
-h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-top: 3rem; }
-h3 { font-size: 1.25rem; font-weight: 600; margin-top: 2rem; }
-
-p {
-    margin-bottom: 1.2rem;
-    max-width: 75ch;
-    line-height: 1.7;
-    color: var(--text-strong);
-}
-
-a { color: var(--accent-empathy); text-decoration: none; font-weight: 600; }
-a:hover { text-decoration: underline; }
-
-ul {
-    list-style-position: outside;
-    padding-left: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-li {
-    margin-bottom: 0.5rem;
-    color: var(--text-strong);
-}
-
-strong { color: var(--text-strongest); }
-
-/* HEADER */
-.header {
-    background: rgba(249, 249, 247, 0.75);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    position: fixed;
-    width: 100%;
-    z-index: 100;
-    border-bottom: var(--border-width) solid transparent;
-    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
-}
-
-.header.scrolled {
-    background: rgba(249, 249, 247, 0.85);
-    border-bottom-color: rgba(228, 231, 235, 0.3);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-}
-
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 1.5rem;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo-img { 
-    height: 70px;
-    width: auto;
-}
-
-.nav-menu {
-    display: none;
-    list-style: none;
-    gap: 1.8rem;
-    align-items: center;
-}
-
-.nav-menu a {
-    color: var(--text-strong);
-    transition: color 0.2s;
-    font-weight: 600;
-}
-
-.nav-menu a:hover { color: var(--accent-empathy); text-decoration: none; }
-
-.hamburger-menu {
-    display: block;
-    font-size: 1.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--text-strongest);
-    z-index: 101;
-}
-
-.mobile-nav-panel {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-main);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transform: translateY(-20px);
-    transition: opacity 0.3s, transform 0.3s;
-    pointer-events: none;
-    z-index: 100;
-}
-
-.mobile-nav-panel.active {
-    display: flex;
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.mobile-nav-panel ul {
-    list-style: none;
-    text-align: center;
-    padding: 0;
-}
-
-.mobile-nav-panel ul li { margin-bottom: 2.5rem; }
-
-.mobile-nav-panel ul a {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--text-strongest);
-}
-
-/* CONTENIDO LEGAL */
+/* Overrides specific to legal pages */
 .legal-content {
     padding-top: 10rem;
     padding-bottom: 5rem;
@@ -192,13 +16,24 @@ strong { color: var(--text-strongest); }
 }
 
 .legal-content h2 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
     border-bottom: 2px solid var(--accent-wisdom);
     padding-bottom: 0.75rem;
     margin-bottom: 1.5rem;
+    margin-top: 3rem;
 }
 
 .legal-content h3 {
     color: var(--accent-empathy);
+    margin-top: 2rem;
+}
+
+.legal-content p {
+    max-width: 75ch;
+}
+
+.legal-content a:hover {
+    text-decoration: underline;
 }
 
 .owner-details,
@@ -235,90 +70,12 @@ strong { color: var(--text-strongest); }
     border-top: 1px solid var(--bg-subtle);
 }
 
-/* FOOTER */
-.footer {
-    background-color: var(--bg-lighter);
-    padding: 4rem 0;
-}
-
-.footer-grid {
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-}
-
-.footer-col h4 { margin-bottom: 1rem; }
-
-.footer-col p,
-.footer-col li,
-.footer-col a {
-    font-size: 0.95rem;
-    color: var(--text-medium);
-}
-
-.footer-col ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-.footer-col li { margin-bottom: 0.5rem; }
-
-.footer-col a:hover {
-    text-decoration: underline;
-    color: var(--accent-empathy);
-}
-
-.footer-bottom {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--bg-subtle);
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--text-medium);
-}
-
-/* IMATGES AMB PROPORCIO CORRECTA - FIX CLS */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* RESPONSIVE */
-@media (min-width: 992px) {
-    .nav-menu { display: flex; }
-    .hamburger-menu { display: none; }
-}
-
 @media (max-width: 768px) {
-    .logo-img {
-        height: 50px;
-    }
-    
     .legal-content {
         padding-top: 8rem;
     }
-    
+
     .highlight-box {
         padding: 1.5rem;
-    }
-}
-/* ===== FIX CLS - Logo (mismo que styles.css) ===== */
-.logo-container {
-    display: flex;
-    align-items: center;
-    width: 240px;
-    height: 70px;
-}
-
-.logo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-@media (max-width: 768px) {
-    .logo-container {
-        width: 180px;
-        height: 50px;
     }
 }
