@@ -448,7 +448,10 @@ section#especializacion .grid-2 > a {
     margin-bottom: 0.8rem;
 }
 
-.tarifa-card li i { color: var(--accent-empathy); }
+.tarifa-card li .icon {
+    color: var(--accent-empathy);
+    margin-right: 0.5rem;
+}
 
 .tarifa-card .btn {
     width: 100%;
@@ -622,7 +625,7 @@ section#especializacion .grid-2 > a {
     color: var(--text-strongest);
 }
 
-.faq-question i {
+.faq-question .icon {
     transition: transform 0.3s ease, color 0.3s ease;
     color: var(--accent-wisdom);
 }
@@ -639,7 +642,7 @@ section#especializacion .grid-2 > a {
     color: var(--text-medium);
 }
 
-.faq-item.active .faq-question i {
+.faq-item.active .faq-question .icon {
     transform: rotate(180deg);
     color: var(--accent-empathy);
 }
