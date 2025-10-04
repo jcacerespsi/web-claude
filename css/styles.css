@@ -737,8 +737,8 @@ section#especializacion .grid-2 > a {
     position: fixed;
     width: 60px;
     height: 60px;
-    bottom: 25px;
-    right: 25px;
+    bottom: 16px;
+    right: 16px;
     background-color: #25D366;
     color: white;
     border-radius: 50%;
@@ -748,7 +748,7 @@ section#especializacion .grid-2 > a {
     font-size: 2rem;
     box-shadow: var(--shadow-md);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    z-index: 99;
+    z-index: 99999;
 }
 
 .whatsapp-float:hover {
