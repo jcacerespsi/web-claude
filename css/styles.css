@@ -329,18 +329,27 @@ section#especializacion .grid-2 > a {
     text-align: center;
 }
 
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+}
+
 /* ICONOS */
-.info-card .icon,
-.content-card .icon {
+.info-card .icon-wrapper,
+.content-card .icon-wrapper {
     font-size: 2rem;
     color: var(--accent-wisdom);
     margin-bottom: 1.5rem;
     opacity: 0.9;
 }
 
-.specialization-card .icon,
-.btn-primary .icon {
+.specialization-card .icon-wrapper {
     color: var(--accent-empathy);
+}
+
+.btn-primary .icon {
+    margin-right: 0.5rem;
 }
 
 .info-card h3,
