@@ -4,10 +4,20 @@
     vertical-align: middle;
 }
 
+.text-primary {
+    color: var(--primary);
+}
+
+.text-earth {
+    color: var(--earth);
+}
+
 /* ESTILOS PARA PÁGINAS LEGALES */
 :root {
     --accent-empathy: #D97757;
     --accent-wisdom: #6B7A99;
+    --primary: var(--accent-wisdom);
+    --earth: var(--accent-empathy);
     --text-strongest: #2D3748;
     --text-strong: #4A5568;
     --text-medium: #6C7A90;
