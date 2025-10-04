@@ -1,0 +1,29 @@
+/* Map and location section */
+
+.map-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.map-section iframe {
+    width: 100%;
+    height: 400px;
+    border: 0;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+}
+
+.map-lazy-container iframe {
+    width: 100%;
+    height: 450px;
+    border: 0;
+    border-radius: 12px;
+}
+
+@media (min-width: 992px) {
+    .map-section {
+        grid-template-columns: 1fr 1fr;
+    }
+}

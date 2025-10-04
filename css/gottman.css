@@ -1,0 +1,27 @@
+/* Gottman exercise block */
+
+.gottman-exercise {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: var(--border-width) solid var(--bg-subtle);
+}
+
+.gottman-exercise h3 {
+    margin-bottom: 1.5rem;
+    color: var(--accent-empathy);
+}
+
+.gottman-exercise ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.gottman-exercise li {
+    background: var(--bg-lighter);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    border-left: 3px solid var(--accent-wisdom);
+}
