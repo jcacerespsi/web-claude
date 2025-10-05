@@ -24,6 +24,10 @@
     font-weight: 400;
     font-display: swap;
     src: url('/fonts/inter-v20-latin-regular.woff2') format('woff2');
+    ascent-override: 90%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+    size-adjust: 102%;
     }
 
     @font-face {
@@ -32,6 +36,10 @@
     font-weight: 600;
     font-display: swap;
     src: url('/fonts/inter-v20-latin-600.woff2') format('woff2');
+    ascent-override: 90%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+    size-adjust: 102%;
     }
 
     @font-face {
@@ -40,6 +48,30 @@
     font-weight: 700;
     font-display: swap;
     src: url('/fonts/inter-v20-latin-700.woff2') format('woff2');
+    ascent-override: 90%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+    size-adjust: 102%;
+    }
+    .header {
+        height: 90px;
+        min-height: 90px;
+    }
+    .nav {
+        min-height: 90px;
+    }
+    i[class*="fa-"] {
+        display: inline-block;
+        width: 1.25em;
+        min-width: 1.25em;
+        text-align: center;
+    }
+    .hamburger-menu {
+        width: 44px;
+        height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
     </style>
     <!-- CSS carregat de forma asíncrona per no bloquejar renderitzat -->
@@ -62,11 +94,12 @@
     <header class="header" id="mainHeader">
         <nav class="nav container">
             <a href="index.html" class="logo-container">
-                <img src="images/logo-javi-caceres-horizontal.svg" 
-                    alt="Javi Cáceres Psicólogo - Logo profesional" 
-                    class="logo-img" 
-                    width="240" 
+                <img src="images/logo-javi-caceres-horizontal.svg"
+                    alt="Javi Cáceres Psicólogo - Logo profesional"
+                    class="logo-img"
+                    width="240"
                     height="70"
+                    decoding="async"
                     fetchpriority="high">
             </a>
             <ul class="nav-menu">
@@ -144,10 +177,11 @@
             <div class="footer-col">
                 <h4>Javi Cáceres Psicólogo</h4>
                 <p>Psicólogo Sanitario en Roses (Girona) y Online. Col. 16.772.</p>
-                <img src="images/colegio-psicologos.webp" 
+                <img src="images/colegio-psicologos.webp"
                     alt="Logo del Col·legi Oficial de Psicologia de Catalunya"
                     width="500"
                     height="224"
+                    decoding="async"
                     style="max-width: 200px; height: auto; margin-top: 1rem; border-radius: 8px;">
             </div>
             <div class="footer-col">
@@ -161,9 +195,9 @@
             <div class="footer-col">
                 <h4>Contacto</h4>
                 <ul>
-                    <li><i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>Carrer del Doctor Hermenegild Arruga, 76, 2n, 2a, Roses</li>
-                    <li><a href="tel:+34621372442"><i class="fas fa-phone" style="margin-right: 0.5rem;"></i>621 372 442</a></li>
-                    <li><a href="mailto:javicaceres@cop.es"><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>javicaceres@cop.es</a></li>
+                    <li><i class="fas fa-map-marker-alt icon-inline" aria-hidden="true"></i>Carrer del Doctor Hermenegild Arruga, 76, 2n, 2a, Roses</li>
+                    <li><a href="tel:+34621372442"><i class="fas fa-phone icon-inline" aria-hidden="true"></i>621 372 442</a></li>
+                    <li><a href="mailto:javicaceres@cop.es"><i class="fas fa-envelope icon-inline" aria-hidden="true"></i>javicaceres@cop.es</a></li>
                 </ul>
             </div>
             <div class="footer-col">
