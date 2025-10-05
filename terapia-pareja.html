@@ -546,14 +546,16 @@
 
     <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"><img src="icons/whatsapp.svg" class="icon" alt="WhatsApp" width="24" height="24" decoding="async"></a>
 
-    <div class="cookie-consent-banner" id="cookie-banner" role="dialog" aria-modal="true" aria-hidden="true">
-        <p>Este sitio web utiliza cookies para mejorar la experiencia del usuario. <a href="politica-cookies.html">Más información sobre cookies</a>.</p>
-        <div class="cookie-consent-banner__actions">
-            <button class="btn btn-secondary" id="reject-cookies-btn" type="button">Rechazar</button>
-            <button class="btn btn-primary" id="accept-cookies-btn" type="button">Aceptar</button>
+    <div class="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-title" aria-describedby="cookie-desc">
+        <span id="cookie-title" class="visually-hidden">Preferencias de cookies</span>
+        <p id="cookie-desc">Este sitio web utiliza cookies para mejorar la experiencia del usuario. <a class="cookie-link" href="/politica-cookies.html" rel="noopener">Más información</a></p>
+        <div class="cookie-actions">
+            <button class="btn btn-secondary js-cookie-reject">Rechazar</button>
+            <button class="btn btn-primary js-cookie-accept">Aceptar</button>
         </div>
     </div>
 
-    <script src="js/main.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/cookies.js" defer></script>
 </body>
 </html>
