@@ -2,25 +2,33 @@
 window.dataLayer = window.dataLayer || [];
 window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
 
-const GTAG_MEASUREMENT_ID = 'G-D5Z9J5PQCK';
-let gtmLoaded = false;
+const GA_MEASUREMENT_ID = 'G-D5Z9J5PQCK';
+window.__GA_MEASUREMENT_ID = GA_MEASUREMENT_ID;
 
-function loadGTM() {
-    if (gtmLoaded) {
+function legacyInjectAnalytics(containerId) {
+    if (window.__gtmLoaded) {
         return;
     }
 
-    gtmLoaded = true;
-    window.gtag('js', new Date());
-    window.gtag('config', GTAG_MEASUREMENT_ID);
-
-    const gtmScript = document.createElement('script');
-    gtmScript.defer = true;
-    gtmScript.src = `https://www.googletagmanager.com/gtag/js?id=${GTAG_MEASUREMENT_ID}`;
-    document.head.appendChild(gtmScript);
+    window.__gtmLoaded = true;
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${containerId}`;
+    document.head.appendChild(script);
 }
 
-window.loadGTM = loadGTM;
+window.loadGTM = function loadGTM() {
+    const containerId = window.__GTM_ID || GA_MEASUREMENT_ID;
+
+    if (typeof window.injectGtm === 'function') {
+        window.injectGtm(containerId);
+    } else {
+        legacyInjectAnalytics(containerId);
+    }
+
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID);
+};
 
 function setUniformTestimonialHeights(){
     const container = document.querySelector('.testimonials-section');
