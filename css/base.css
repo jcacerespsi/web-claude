@@ -17,6 +17,10 @@
     font-weight: 600;
     font-display: swap;
     src: url('/fonts/inter-v20-latin-600.woff2') format('woff2');
+    ascent-override: 90%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+    size-adjust: 102%;
 }
 
 @font-face {
@@ -25,6 +29,10 @@
     font-weight: 700;
     font-display: swap;
     src: url('/fonts/inter-v20-latin-700.woff2') format('woff2');
+    ascent-override: 90%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+    size-adjust: 102%;
 }
 
 :root {
@@ -70,6 +78,11 @@ body {
     color: var(--text-strong);
     line-height: 1.6;
     font-size: 17px;
+}
+
+html,
+body {
+    font-synthesis-weight: none;
 }
 
 img.icon,
@@ -304,6 +317,13 @@ strong {
     background: rgba(249, 249, 247, 0.85);
     border-bottom-color: rgba(228, 231, 235, 0.3);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+@media (min-width: 1024px) {
+    header.site-header {
+        min-height: 72px;
+        transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, opacity 0.2s ease, transform 0.2s ease; /* no height transitions */
+    }
 }
 
 .nav {
