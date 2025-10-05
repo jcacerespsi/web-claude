@@ -104,11 +104,16 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Psychologist",
-      "name": "Javi Cáceres - Terapia de Pareja en Roses",
+      "@type": [
+        "LocalBusiness",
+        "Psychologist"
+      ],
+      "name": "Javi Cáceres Psicólogo Sanitario",
+      "@id": "https://www.jcacerespsicologo.com/#localbusiness",
+      "url": "https://www.jcacerespsicologo.com/",
       "image": "https://www.jcacerespsicologo.com/images/logo-javi-caceres-horizontal.svg",
-      "url": "https://www.jcacerespsicologo.com/terapia-pareja.html",
       "telephone": "+34621372442",
+      "email": "mailto:javicaceres@cop.es",
       "priceRange": "€€",
       "address": {
         "@type": "PostalAddress",
@@ -118,7 +123,29 @@
         "addressRegion": "Girona",
         "addressCountry": "ES"
       },
-      "geo": { "@type": "GeoCoordinates", "latitude": 42.2642011, "longitude": 3.1789986 }
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.2642011,
+        "longitude": 3.1789986
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "20:00"
+        }
+      ],
+      "sameAs": [
+        "https://maps.app.goo.gl/qK8TCrotW8m6P8oCA",
+        "https://wa.me/34621372442"
+      ]
     }
     </script>
 </head>
