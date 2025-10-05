@@ -139,6 +139,25 @@ section#especializacion .grid-2 > a {
     opacity: 0.9;
 }
 
+#como-trabajo .icon-wrapper {
+    font-size: initial;
+}
+
+#como-trabajo .icon-slot {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    display: inline-block;
+}
+
+#como-trabajo img.icon,
+#como-trabajo svg.icon {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    font-size: initial;
+}
+
 .specialization-card .icon-wrapper {
     color: var(--earth);
 }
@@ -196,6 +215,18 @@ section#especializacion .grid-2 > a {
 
 .faq-item.active {
     border-color: var(--accent-empathy);
+}
+
+@media (min-width: 1024px) {
+    #como-trabajo .section-header {
+        min-height: 120px;
+    }
+
+    #como-trabajo .info-card {
+        min-height: 320px;
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .faq-question {

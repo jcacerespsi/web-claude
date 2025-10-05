@@ -25,3 +25,13 @@
     margin-bottom: 0.8rem;
     border-left: 3px solid var(--accent-wisdom);
 }
+
+@media (min-width: 1024px) {
+    #ejercicio-gottman .section-header {
+        min-height: 120px;
+    }
+
+    #ejercicio-gottman .gottman-exercise {
+        min-height: 320px;
+    }
+}
