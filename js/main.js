@@ -74,7 +74,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             const safeIndex = Math.min(Math.max(currentIndex, 0), dots.length - 1);
             dots.forEach((dot, index) => {
-                dot.classList[index === safeIndex ? 'add' : 'remove']('active');
+                const isActive = index === safeIndex;
+                dot.classList[isActive ? 'add' : 'remove']('active');
+                if (isActive) {
+                    dot.setAttribute('aria-current', 'page');
+                } else {
+                    dot.removeAttribute('aria-current');
+                }
             });
         };
 
@@ -83,9 +89,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const showSlide = (index) => {
             const maxIndex = getMaxIndex();
             currentIndex = Math.min(Math.max(index, 0), maxIndex);
-            const slideWidth = 100 / slidesPerView;
+
+            if (!totalPages) {
+                updatePagination();
+                return;
+            }
+
+            const translatePercentage = (currentIndex * 100) / totalPages;
             // Usar transform con will-change para mejor performance
-            slider.style.transform = `translateX(${-currentIndex * slideWidth}%)`;
+            slider.style.transform = `translateX(-${translatePercentage}%)`;
             updatePagination();
         };
 
