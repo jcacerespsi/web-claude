@@ -285,69 +285,6 @@ section#especializacion .grid-2 > a {
     white-space: nowrap;
 }
 
-.cookie-banner {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 99999;
-    padding: 16px;
-    gap: 12px;
-    background: rgba(0, 0, 0, 0.88);
-    color: #fff;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    transform: translateY(100%);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.cookie-banner.is-visible {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
-.cookie-banner p,
-.cookie-banner a {
-    color: #fff;
-}
-
-.cookie-banner p {
-    margin: 0;
-}
-
-.cookie-link {
-    color: #fff;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-}
-
-.cookie-actions {
-    display: flex;
-    gap: 12px;
-}
-
-.cookie-actions .btn {
-    outline-offset: 2px;
-}
-
-.cookie-actions .btn:focus {
-    outline: 2px solid #fff;
-}
-
-@media (max-width: 480px) {
-    .cookie-actions {
-        width: 100%;
-        justify-content: flex-end;
-    }
-}
-
 @media (min-width: 768px) {
     .grid-2 { grid-template-columns: 1fr 1fr; }
 }
