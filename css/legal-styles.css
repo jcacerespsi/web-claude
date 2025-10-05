@@ -1,5 +1,3 @@
-@import url('./base.css');
-
 /* Overrides specific to legal pages */
 .legal-content {
     padding-top: 10rem;
@@ -15,7 +13,7 @@
     text-align: center;
 }
 
-.legal-content h2 {
+.legal-heading {
     font-size: clamp(1.8rem, 4vw, 2.4rem);
     border-bottom: 2px solid var(--accent-wisdom);
     padding-bottom: 0.75rem;
