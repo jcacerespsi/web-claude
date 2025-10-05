@@ -2,6 +2,20 @@
 window.dataLayer = window.dataLayer || [];
 window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
 
+function setUniformTestimonialHeights(){
+    const container = document.querySelector('.testimonials-section');
+    if (!container) return;
+    container.style.removeProperty('--t-card-h');
+    const cards = container.querySelectorAll('.testimonial-card');
+    let max = 0;
+    cards.forEach(card => {
+        max = Math.max(max, card.offsetHeight);
+    });
+    if (max) {
+        container.style.setProperty('--t-card-h', `${max}px`);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Header scroll effect - PASSIVE LISTENER
     const header = document.getElementById('mainHeader');
@@ -34,17 +48,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // TESTIMONIAL CAROUSEL - OPTIMIZADO
     const slider = document.querySelector('.testimonial-slider');
     if (slider) {
-        const slides = Array.from(slider.children);
+        const totalItems = slider.children.length;
+
         const nextButton = document.querySelector('.next-btn');
         const prevButton = document.querySelector('.prev-btn');
         const paginationContainer = document.getElementById('slider-pagination');
-        const desktopQuery = window.matchMedia('(min-width: 992px)');
+        const desktopQuery = window.matchMedia('(min-width: 1024px)');
         const tabletQuery = window.matchMedia('(min-width: 768px)');
         const cleanupCallbacks = [];
         let currentIndex = 0;
         let intervalId;
-        let slidesPerView = 1;
-        let totalPages = 0;
+        let itemsPerView = 1;
+        let totalPages = Math.max(1, Math.ceil(totalItems / itemsPerView));
         let layoutUpdateTimeoutId = null;
         let sliderObserver;
         let isSliderVisible = !('IntersectionObserver' in window);
@@ -61,7 +76,30 @@ document.addEventListener('DOMContentLoaded', function() {
             };
         };
 
-        const calculateSlidesPerView = () => {
+        const throttle = (fn, limit = 200) => {
+            let waiting = false;
+            let pendingArgs = null;
+
+            return (...args) => {
+                if (waiting) {
+                    pendingArgs = args;
+                    return;
+                }
+
+                fn(...args);
+                waiting = true;
+
+                setTimeout(() => {
+                    waiting = false;
+                    if (pendingArgs) {
+                        fn(...pendingArgs);
+                        pendingArgs = null;
+                    }
+                }, limit);
+            };
+        };
+
+        const calculateItemsPerView = () => {
             if (desktopQuery.matches) {
                 return 3;
             }
@@ -93,34 +131,24 @@ document.addEventListener('DOMContentLoaded', function() {
         const showSlide = (index) => {
             const maxIndex = getMaxIndex();
             currentIndex = Math.min(Math.max(index, 0), maxIndex);
-
-            if (!totalPages) {
-                updatePagination();
-                return;
-            }
-
-            const translatePercentage = (currentIndex * 100) / totalPages;
-            // Usar transform con will-change para mejor performance
-            slider.style.transform = `translateX(-${translatePercentage}%)`;
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
             updatePagination();
+            setUniformTestimonialHeights();
         };
 
         const ensurePaginationDots = () => {
-            const nextTotalPages = Math.max(1, Math.ceil(slides.length / slidesPerView));
-            const previousTotalPages = totalPages;
-            totalPages = nextTotalPages;
-
             if (!paginationContainer) {
                 return;
             }
 
-            const shouldRebuild = previousTotalPages !== totalPages || paginationContainer.childElementCount !== totalPages;
+            const shouldRebuild = paginationContainer.childElementCount !== totalPages;
 
             if (shouldRebuild) {
                 paginationContainer.innerHTML = '';
 
                 for (let i = 0; i < totalPages; i++) {
                     const dot = document.createElement('button');
+                    dot.type = 'button';
                     dot.classList.add('pagination-dot');
                     dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
 
@@ -133,31 +161,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     paginationContainer.appendChild(dot);
                 }
+
+                setUniformTestimonialHeights();
             }
 
             updatePagination();
         };
 
-        const applySliderLayout = () => {
-            const newSlidesPerView = calculateSlidesPerView();
-            const slidesPerViewChanged = newSlidesPerView !== slidesPerView;
-            const previousTotalPages = totalPages;
-
-            slidesPerView = newSlidesPerView;
+        const applySliderLayout = (requestedItemsPerView = calculateItemsPerView()) => {
+            itemsPerView = requestedItemsPerView;
+            totalPages = Math.max(1, Math.ceil(totalItems / itemsPerView));
             ensurePaginationDots();
-
-            if (currentIndex > getMaxIndex()) {
-                currentIndex = 0;
-            }
-
-            if (slidesPerViewChanged || previousTotalPages !== totalPages) {
-                showSlide(currentIndex);
-            } else {
-                updatePagination();
-            }
+            currentIndex = Math.min(currentIndex, getMaxIndex());
+            showSlide(currentIndex);
         };
 
-        const scheduleLayoutUpdate = debounce(applySliderLayout, 150);
+        const scheduleLayoutUpdate = debounce(() => {
+            applySliderLayout();
+        }, 150);
 
         const registerMediaListener = (mediaQuery, handler) => {
             if (!mediaQuery) return () => {};
@@ -178,6 +199,17 @@ document.addEventListener('DOMContentLoaded', function() {
         cleanupCallbacks.push(registerMediaListener(desktopQuery, handleBreakpointChange));
         cleanupCallbacks.push(registerMediaListener(tabletQuery, handleBreakpointChange));
 
+        const throttledResizeHandler = throttle(() => {
+            const computedItemsPerView = calculateItemsPerView();
+            if (computedItemsPerView !== itemsPerView) {
+                applySliderLayout(computedItemsPerView);
+                setUniformTestimonialHeights();
+            }
+        }, 200);
+
+        window.addEventListener('resize', throttledResizeHandler);
+        cleanupCallbacks.push(() => window.removeEventListener('resize', throttledResizeHandler));
+
         const nextSlide = () => {
             const maxIndex = getMaxIndex();
             currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
@@ -191,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         const startAutoSlide = () => {
-            if (intervalId || !isSliderVisible) return;
+            if (intervalId || !isSliderVisible || totalPages <= 1) return;
             intervalId = setInterval(nextSlide, 7000);
         };
 
@@ -201,17 +233,21 @@ document.addEventListener('DOMContentLoaded', function() {
             intervalId = null;
         };
 
-        nextButton.addEventListener('click', () => {
-            nextSlide();
-            stopAutoSlide();
-            startAutoSlide();
-        });
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                nextSlide();
+                stopAutoSlide();
+                startAutoSlide();
+            });
+        }
 
-        prevButton.addEventListener('click', () => {
-            prevSlide();
-            stopAutoSlide();
-            startAutoSlide();
-        });
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                prevSlide();
+                stopAutoSlide();
+                startAutoSlide();
+            });
+        }
 
         if ('IntersectionObserver' in window) {
             sliderObserver = new IntersectionObserver((entries) => {
@@ -233,8 +269,8 @@ document.addEventListener('DOMContentLoaded', function() {
             startAutoSlide();
         }
 
-        applySliderLayout();
-        if (!intervalId && isSliderVisible) {
+        applySliderLayout(calculateItemsPerView());
+        if (!intervalId && isSliderVisible && totalPages > 1) {
             startAutoSlide();
         }
 
@@ -257,6 +293,9 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('pagehide', cleanup, { once: true });
         window.addEventListener('beforeunload', cleanup, { once: true });
     }
+
+    setUniformTestimonialHeights();
+    window.addEventListener('load', setUniformTestimonialHeights);
 
     // GOOGLE MAPS LAZY LOAD AUTOMÁTICO CON INTERSECTION OBSERVER
     const initLazyMaps = () => {
