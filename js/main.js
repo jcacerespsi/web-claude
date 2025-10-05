@@ -1,3 +1,7 @@
+// Inicializa dataLayer y gtag desde el arranque para conservar eventos previos
+window.dataLayer = window.dataLayer || [];
+window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+
 document.addEventListener('DOMContentLoaded', function() {
     // Header scroll effect - PASSIVE LISTENER
     const header = document.getElementById('mainHeader');
@@ -375,13 +379,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         gtmLoaded = true;
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
         window.gtag('js', new Date());
         window.gtag('config', GTAG_MEASUREMENT_ID);
 
         const gtmScript = document.createElement('script');
-        gtmScript.async = true;
+        gtmScript.defer = true;
         gtmScript.src = `https://www.googletagmanager.com/gtag/js?id=${GTAG_MEASUREMENT_ID}`;
         document.head.appendChild(gtmScript);
     };
