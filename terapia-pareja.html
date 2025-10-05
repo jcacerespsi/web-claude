@@ -43,10 +43,6 @@
     font-weight: 400;
     font-display: swap;
     src: url('/fonts/inter-v20-latin-regular.woff2') format('woff2');
-    ascent-override: 90%;
-    descent-override: 22%;
-    line-gap-override: 0%;
-    size-adjust: 102%;
     }
 
     @font-face {
@@ -55,10 +51,6 @@
     font-weight: 600;
     font-display: swap;
     src: url('/fonts/inter-v20-latin-600.woff2') format('woff2');
-    ascent-override: 90%;
-    descent-override: 22%;
-    line-gap-override: 0%;
-    size-adjust: 102%;
     }
 
     @font-face {
@@ -67,10 +59,6 @@
     font-weight: 700;
     font-display: swap;
     src: url('/fonts/inter-v20-latin-700.woff2') format('woff2');
-    ascent-override: 90%;
-    descent-override: 22%;
-    line-gap-override: 0%;
-    size-adjust: 102%;
     }
     </style>
 
@@ -90,10 +78,6 @@
         width: 100%;
         z-index: 100;
         height: 90px;
-        min-height: 90px;
-    }
-    .nav {
-        min-height: 90px;
     }
     .hero {
         padding-top: 8rem;
@@ -101,19 +85,6 @@
     .logo-container {
         width: 240px;
         height: 70px;
-    }
-    i[class*="fa-"] {
-        display: inline-block;
-        width: 1.25em;
-        min-width: 1.25em;
-        text-align: center;
-    }
-    .hamburger-menu {
-        width: 44px;
-        height: 44px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
     }
     @media (max-width: 768px) {
         .logo-container {
@@ -167,12 +138,11 @@
     <header class="header" id="mainHeader">
         <nav class="nav container">
             <a href="index.html" class="logo-container">
-                <img src="images/logo-javi-caceres-horizontal.svg"
-                    alt="Javi Cáceres Psicólogo - Logo profesional"
-                    class="logo-img"
-                    width="240"
+                <img src="images/logo-javi-caceres-horizontal.svg" 
+                    alt="Javi Cáceres Psicólogo - Logo profesional" 
+                    class="logo-img" 
+                    width="240" 
                     height="70"
-                    decoding="async"
                     fetchpriority="high">
             </a>
             <ul class="nav-menu">
@@ -209,7 +179,7 @@
                 <h1>¿Sentís que la distancia y las discusiones se han adueñado de vuestra relación?</h1>
                 <p class="subtitle">Recuperar la conexión, la amistad y la pasión es posible. Os ofrezco un método de terapia de pareja basado en la ciencia (Gottman) y en vuestras propias fortalezas para reconstruir el "nosotros" que un día fuisteis.</p>
                 <div class="hero-actions">
-                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp" aria-hidden="true"></i> Iniciar el Cambio</a>
+                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Iniciar el Cambio</a>
                 </div>
             </div>
         </section>
@@ -418,7 +388,7 @@
                 <h2>Construid el futuro que deseáis, juntos.</h2>
                 <p>Dar el paso de pedir ayuda como pareja es un acto de valentía y un gran gesto de amor hacia la relación. Si estáis listos para empezar a cambiar las cosas, estoy aquí para guiaros.</p>
                 <div class="hero-actions" style="margin-top: 2rem;">
-                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp" aria-hidden="true"></i> Contactar para Terapia de Pareja</a>
+                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Contactar para Terapia de Pareja</a>
                 </div>
             </div>
         </section>
@@ -429,12 +399,11 @@
             <div class="footer-col">
                 <h4>Javi Cáceres Psicólogo</h4>
                 <p>Psicólogo Sanitario en Roses (Girona) y Online. Col. 16.772.</p>
-                <img src="images/colegio-psicologos.webp"
+                <img src="images/colegio-psicologos.webp" 
                     alt="Logo del Col·legi Oficial de Psicologia de Catalunya"
                     width="500"
                     height="224"
                     loading="lazy"
-                    decoding="async"
                     style="max-width: 200px; height: auto; margin-top: 1rem; border-radius: 8px;">
             </div>
             <div class="footer-col">
@@ -449,13 +418,13 @@
                 <h4>Contacto</h4>
                 <ul>
                     <li>
-                        <i class="fas fa-map-marker-alt icon-inline" aria-hidden="true"></i>
+                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
                         <a href="https://maps.app.goo.gl/qK8TCrotW8m6P8oCA" target="_blank" rel="noopener">
                             Carrer del Doctor Hermenegild Arruga, 76, 2n, 2a, Roses
                         </a>
                     </li>
-                    <li><a href="tel:+34621372442"><i class="fas fa-phone icon-inline" aria-hidden="true"></i>621 372 442</a></li>
-                    <li><a href="mailto:javicaceres@cop.es"><i class="fas fa-envelope icon-inline" aria-hidden="true"></i>javicaceres@cop.es</a></li>
+                    <li><a href="tel:+34621372442"><i class="fas fa-phone" style="margin-right: 0.5rem;"></i>621 372 442</a></li>
+                    <li><a href="mailto:javicaceres@cop.es"><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>javicaceres@cop.es</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -471,7 +440,7 @@
         <div class="footer-bottom"><p>&copy; 2025 Javi Cáceres Psicólogo. Todos los derechos reservados.</p></div>
     </footer>
 
-    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
     <div class="cookie-consent-banner" id="cookie-banner">
         <p>Este sitio web utiliza cookies para mejorar la experiencia del usuario. <a href="politica-cookies.html">Más información</a>.</p>
