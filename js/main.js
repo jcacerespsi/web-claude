@@ -2,6 +2,26 @@
 window.dataLayer = window.dataLayer || [];
 window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
 
+const GTAG_MEASUREMENT_ID = 'G-D5Z9J5PQCK';
+let gtmLoaded = false;
+
+function loadGTM() {
+    if (gtmLoaded) {
+        return;
+    }
+
+    gtmLoaded = true;
+    window.gtag('js', new Date());
+    window.gtag('config', GTAG_MEASUREMENT_ID);
+
+    const gtmScript = document.createElement('script');
+    gtmScript.defer = true;
+    gtmScript.src = `https://www.googletagmanager.com/gtag/js?id=${GTAG_MEASUREMENT_ID}`;
+    document.head.appendChild(gtmScript);
+}
+
+window.loadGTM = loadGTM;
+
 function setUniformTestimonialHeights(){
     const container = document.querySelector('.testimonials-section');
     if (!container) return;
@@ -335,162 +355,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     };
-
-    // COOKIE CONSENT BANNER
-    const GTAG_MEASUREMENT_ID = 'G-D5Z9J5PQCK';
-    const CONSENT_STORAGE_KEY = 'cookieConsent';
-    const CONSENT_COOKIE_KEY = 'cookie_consent';
-    const CONSENT_COOKIE_MAX_AGE = 15552000; // 180 días en segundos
-    let gtmLoaded = false;
-
-    const cookieBanner = document.getElementById('cookie-banner');
-    const acceptCookiesBtn = document.getElementById('accept-cookies-btn');
-    const rejectCookiesBtn = document.getElementById('reject-cookies-btn');
-
-    const isLocalStorageAvailable = (() => {
-        try {
-            const testKey = '__consent_test__';
-            window.localStorage.setItem(testKey, '1');
-            window.localStorage.removeItem(testKey);
-            return true;
-        } catch (error) {
-            return false;
-        }
-    })();
-
-    const setCookieValue = (name, value, maxAgeSeconds) => {
-        document.cookie = `${name}=${value}; max-age=${maxAgeSeconds}; path=/`;
-    };
-
-    const getCookieValue = (name) => {
-        const nameEQ = `${name}=`;
-        return document.cookie
-            .split(';')
-            .map(cookie => cookie.trim())
-            .find(cookie => cookie.startsWith(nameEQ))?.substring(nameEQ.length) || null;
-    };
-
-    const getStoredConsent = () => {
-        let storedValue = null;
-
-        if (isLocalStorageAvailable) {
-            try {
-                storedValue = window.localStorage.getItem(CONSENT_STORAGE_KEY);
-            } catch (error) {
-                storedValue = null;
-            }
-        }
-
-        if (!storedValue) {
-            storedValue = getCookieValue(CONSENT_COOKIE_KEY);
-        }
-
-        return storedValue;
-    };
-
-    const persistConsent = (value) => {
-        let stored = false;
-
-        if (isLocalStorageAvailable) {
-            try {
-                window.localStorage.setItem(CONSENT_STORAGE_KEY, value);
-                stored = true;
-            } catch (error) {
-                stored = false;
-            }
-        }
-
-        if (!stored) {
-            try {
-                setCookieValue(CONSENT_COOKIE_KEY, value, CONSENT_COOKIE_MAX_AGE);
-                stored = true;
-            } catch (error) {
-                stored = false;
-            }
-        }
-
-        return stored;
-    };
-
-    const loadGTM = () => {
-        if (gtmLoaded) {
-            return;
-        }
-
-        gtmLoaded = true;
-        window.gtag('js', new Date());
-        window.gtag('config', GTAG_MEASUREMENT_ID);
-
-        const gtmScript = document.createElement('script');
-        gtmScript.defer = true;
-        gtmScript.src = `https://www.googletagmanager.com/gtag/js?id=${GTAG_MEASUREMENT_ID}`;
-        document.head.appendChild(gtmScript);
-    };
-
-    window.loadGTM = loadGTM;
-
-    const hideCookieBanner = () => {
-        if (!cookieBanner) {
-            return;
-        }
-
-        cookieBanner.classList.remove('active');
-        cookieBanner.setAttribute('aria-hidden', 'true');
-        document.removeEventListener('keydown', handleBannerKeydown);
-    };
-
-    const showCookieBanner = () => {
-        if (!cookieBanner) {
-            return;
-        }
-
-        cookieBanner.classList.add('active');
-        cookieBanner.setAttribute('aria-hidden', 'false');
-        document.addEventListener('keydown', handleBannerKeydown);
-
-        window.setTimeout(() => {
-            if (document.activeElement !== acceptCookiesBtn) {
-                acceptCookiesBtn?.focus({ preventScroll: true });
-            }
-        }, 0);
-    };
-
-    const handleBannerKeydown = (event) => {
-        if (event.key === 'Escape' || event.key === 'Esc') {
-            event.preventDefault();
-            if (rejectCookiesBtn) {
-                rejectCookiesBtn.click();
-            } else if (acceptCookiesBtn) {
-                acceptCookiesBtn.click();
-            }
-        }
-    };
-
-    if (cookieBanner && acceptCookiesBtn) {
-        const storedConsent = getStoredConsent();
-
-        if (storedConsent === 'accepted') {
-            loadGTM();
-            hideCookieBanner();
-        } else if (!storedConsent) {
-            showCookieBanner();
-        } else {
-            hideCookieBanner();
-        }
-
-        acceptCookiesBtn.addEventListener('click', () => {
-            persistConsent('accepted');
-            loadGTM();
-            hideCookieBanner();
-        });
-
-        if (rejectCookiesBtn) {
-            rejectCookiesBtn.addEventListener('click', () => {
-                persistConsent('rejected');
-                hideCookieBanner();
-            });
-        }
-    }
 
     // Inicializar lazy load de mapas
     initLazyMaps();
