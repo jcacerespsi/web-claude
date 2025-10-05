@@ -5,6 +5,10 @@
     font-weight: 400;
     font-display: swap;
     src: url('/fonts/inter-v20-latin-regular.woff2') format('woff2');
+    ascent-override: 90%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+    size-adjust: 102%;
 }
 
 @font-face {
@@ -66,6 +70,13 @@ body {
     color: var(--text-strong);
     line-height: 1.6;
     font-size: 17px;
+}
+
+img.icon,
+svg.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
 }
 
 .container {
