@@ -1,3 +1,20 @@
 @import url('./common.css');
 @import url('./hero.css');
 @import url('./testimonios.css');
+
+.eficacia .media-slot {
+    aspect-ratio: 4 / 5;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.eficacia .media-slot img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.eficacia .about-image {
+    aspect-ratio: auto;
+}
