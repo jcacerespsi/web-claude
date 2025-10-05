@@ -60,11 +60,9 @@
     const hideBannerElement = (banner) => {
         banner.classList.remove('is-visible');
         banner.setAttribute('aria-hidden', 'true');
-        banner.style.display = 'none';
     };
 
     const showBannerElement = (banner, acceptButton) => {
-        banner.style.display = 'flex';
         requestAnimationFrame(() => {
             banner.classList.add('is-visible');
             banner.setAttribute('aria-hidden', 'false');
