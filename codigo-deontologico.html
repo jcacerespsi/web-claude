@@ -46,14 +46,6 @@
 
     <link rel="preload" href="css/legal-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="css/legal-styles.css"></noscript>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D5Z9J5PQCK"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-D5Z9J5PQCK');
-    </script>
 </head>
 <body>
 
@@ -186,7 +178,15 @@
         </div>
         <div class="footer-bottom"><p>&copy; 2025 Javi Cáceres Psicólogo. Todos los derechos reservados.</p></div>
     </footer>
-    
-    <script src="js/legal.js"></script>
+
+    <div class="cookie-consent-banner" id="cookie-banner" role="dialog" aria-modal="true" aria-hidden="true">
+        <p>Este sitio web utiliza cookies para mejorar la experiencia del usuario. <a href="politica-cookies.html">Más información</a>.</p>
+        <div class="cookie-consent-banner__actions">
+            <button class="btn btn-secondary" id="reject-cookies-btn" type="button">Rechazar</button>
+            <button class="btn btn-primary" id="accept-cookies-btn" type="button">Aceptar</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
 </body>
 </html>

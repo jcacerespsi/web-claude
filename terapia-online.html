@@ -3,7 +3,6 @@
 <head>
     <!-- OPTIMIZACIÓN: Preconnect a dominios externos -->
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,14 +101,7 @@
     <link rel="preload" href="css/terapia-online.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="css/terapia-online.css"></noscript>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D5Z9J5PQCK"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-D5Z9J5PQCK');
-    </script>
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -474,9 +466,12 @@
 
     <a href="https://wa.me/34621372442?text=Hola%20Javi,%20me%20gustaría%20pedir%20información%20sobre%20la%20terapia%20online." class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp"><img src="icons/whatsapp.svg" class="icon" alt="WhatsApp" width="24" height="24" decoding="async"></a>
 
-    <div class="cookie-consent-banner" id="cookie-banner">
+    <div class="cookie-consent-banner" id="cookie-banner" role="dialog" aria-modal="true" aria-hidden="true">
         <p>Este sitio web utiliza cookies para mejorar la experiencia del usuario. <a href="politica-cookies.html">Más información</a>.</p>
-        <button class="btn btn-primary" id="accept-cookies-btn">Aceptar</button>
+        <div class="cookie-consent-banner__actions">
+            <button class="btn btn-secondary" id="reject-cookies-btn" type="button">Rechazar</button>
+            <button class="btn btn-primary" id="accept-cookies-btn" type="button">Aceptar</button>
+        </div>
     </div>
 
     <script src="js/main.js"></script>
