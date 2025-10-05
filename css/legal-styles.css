@@ -23,7 +23,7 @@
     margin-top: 3rem;
 }
 
-.legal-content h3 {
+.legal-subheading {
     color: var(--accent-empathy);
     margin-top: 2rem;
 }
@@ -59,15 +59,27 @@
     box-shadow: var(--shadow-sm);
 }
 
-.highlight-box h3 {
+.highlight-heading {
     color: var(--accent-empathy);
     margin-top: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 1.5rem;
 }
 
-.highlight-box h3:not(:first-child) {
+.highlight-heading + .highlight-heading {
     margin-top: 2.5rem;
     padding-top: 2rem;
     border-top: 1px solid var(--bg-subtle);
+}
+
+.legal-section-heading {
+    color: var(--accent-empathy);
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    font-size: clamp(1.6rem, 3.5vw, 2.1rem);
 }
 
 @media (max-width: 768px) {

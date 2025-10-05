@@ -309,8 +309,10 @@ img {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
-.footer-col h4 {
+.footer-heading {
     margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
 }
 
 .footer-col p,
