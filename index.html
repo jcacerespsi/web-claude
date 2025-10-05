@@ -103,12 +103,16 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Psychologist",
+      "@type": [
+        "LocalBusiness",
+        "Psychologist"
+      ],
       "name": "Javi Cáceres Psicólogo Sanitario",
-      "image": "https://www.jcacerespsicologo.com/images/logo-javi-caceres.svg",
-      "@id": "https://www.jcacerespsicologo.com/",
+      "@id": "https://www.jcacerespsicologo.com/#localbusiness",
       "url": "https://www.jcacerespsicologo.com/",
+      "image": "https://www.jcacerespsicologo.com/images/logo-javi-caceres-horizontal.svg",
       "telephone": "+34621372442",
+      "email": "mailto:javicaceres@cop.es",
       "priceRange": "€€",
       "address": {
         "@type": "PostalAddress",
@@ -123,25 +127,23 @@
         "latitude": 42.2642011,
         "longitude": 3.1789986
       },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "09:00",
-        "closes": "20:00"
-      },
-       "review": [
+      "openingHoursSpecification": [
         {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-          "author": { "@type": "Person", "name": "Dra. M.L." },
-          "reviewBody": "Un profesional excelente. Estoy muy agradecida con Javi por su profesionalidad y empatía."
-        },
-        {
-          "@type": "Review",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5" },
-          "author": { "@type": "Person", "name": "C.G.M." },
-          "reviewBody": "Estoy muy contenta. Totalmente recomendable. Es profesional pero también muy cercano."
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "20:00"
         }
+      ],
+      "sameAs": [
+        "https://maps.app.goo.gl/qK8TCrotW8m6P8oCA",
+        "https://wa.me/34621372442"
       ]
     }
     </script>
