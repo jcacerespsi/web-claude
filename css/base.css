@@ -152,6 +152,10 @@ strong {
     color: #fff;
 }
 
+.cookie-banner a {
+    white-space: normal;
+}
+
 .cookie-banner p {
     margin: 0;
 }
