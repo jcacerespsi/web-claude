@@ -31,53 +31,15 @@
     <!-- Fonts Inter (self-hosted per millorar velocitat) -->
     <link rel="preload" href="/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/inter-v20-latin-600.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/inter-v20-latin-700.woff2" as="font" type="font/woff2" crossorigin> 
-    <style>
-    @font-face{font-family:'Inter';src:url('/fonts/inter-v20-latin-regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;ascent-override:90%;descent-override:22%;line-gap-override:0%;size-adjust:102%}
-    @font-face{font-family:'Inter';src:url('/fonts/inter-v20-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;ascent-override:90%;descent-override:22%;line-gap-override:0%;size-adjust:102%}
-    @font-face{font-family:'Inter';src:url('/fonts/inter-v20-latin-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;ascent-override:90%;descent-override:22%;line-gap-override:0%;size-adjust:102%}
-    </style>
+    <link rel="preload" href="/fonts/inter-v20-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 
-    <!-- CSS CRÍTICO - Previene CLS -->
-    <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        background-color: #F9F9F7;
-        color: #4A5568;
-        line-height: 1.6;
-    }
-    .header {
-        background: rgba(249, 249, 247, 0.75);
-        backdrop-filter: blur(12px);
-        position: fixed;
-        width: 100%;
-        z-index: 100;
-        height: 90px;
-    }
-    .hero {
-        padding-top: 8rem;
-    }
-    .logo-container {
-        width: 240px;
-        height: 70px;
-    }
-    @media (max-width: 768px) {
-        .logo-container {
-            width: 180px;
-            height: 50px;
-        }
-        .hero {
-            padding-top: 8rem;
-        }
-    }
-    </style>
-    
     <link rel="stylesheet" href="/css/base.css">
-    <!-- CSS carregat de forma asíncrona per no bloquejar renderitzat -->
-
-    <link rel="preload" href="css/terapia-pareja.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="css/terapia-pareja.css"></noscript>
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/hero.css">
+    <link rel="stylesheet" href="/css/space.css">
+    <link rel="stylesheet" href="/css/testimonios.css">
+    <link rel="stylesheet" href="/css/mapa.css">
+    <link rel="stylesheet" href="/css/terapia-pareja.css">
     
     
     <script type="application/ld+json">
@@ -189,12 +151,12 @@
                     <h2 class="section-title">Un Mapa Claro para Vuestra Relación</h2>
                 </div>
                 <div class="grid-2">
-                    <div class="content-card">
+                    <div class="content-card card">
                         <div class="icon-wrapper text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor"><path d="M240 64C213.5 64 192 85.5 192 112L192 320C192 346.5 213.5 368 240 368L304 368C330.5 368 352 346.5 352 320L352 256L384 256C454.7 256 512 313.3 512 384C512 454.7 454.7 512 384 512L96 512C78.3 512 64 526.3 64 544C64 561.7 78.3 576 96 576L544 576C561.7 576 576 561.7 576 544C576 526.3 561.7 512 544 512L527.1 512C557.5 478 576 433.2 576 384C576 278 490 192 384 192L352 192L352 112C352 85.5 330.5 64 304 64L240 64zM184 416C170.7 416 160 426.7 160 440C160 453.3 170.7 464 184 464L360 464C373.3 464 384 453.3 384 440C384 426.7 373.3 416 360 416L184 416z" fill="currentColor" /></svg></div>
                         <h3>El Método Gottman: La Ciencia de las Parejas</h3>
                         <p>No trabajaremos con opiniones, sino con décadas de investigación científica. El Dr. John Gottman identificó los pilares que sostienen a las parejas felices. Aprenderemos a desactivar los "Cuatro Jinetes del Apocalipsis" (crítica, desprecio, actitud defensiva y evasión) y a construir una base sólida de amistad, admiración y propósito compartido.</p>
                     </div>
-                    <div class="content-card">
+                    <div class="content-card card">
                         <div class="icon-wrapper text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor"><path d="M488 192H336v56c0 39.7-32.3 72-72 72s-72-32.3-72-72V126.4l-64.9 39C107.8 176.9 96 197.8 96 220.2v47.3l-80 46.2C.7 322.5-4.6 342.1 4.3 357.4l80 138.6c8.8 15.3 28.4 20.5 43.7 11.7L231.4 448H368c35.3 0 64-28.7 64-64h16c17.7 0 32-14.3 32-32v-64h8c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24zm147.7-37.4L555.7 16C546.9.7 527.3-4.5 512 4.3L408.6 64H306.4c-12 0-23.7 3.4-33.9 9.7L239 94.6c-9.4 5.8-15 16.1-15 27.1V248c0 22.1 17.9 40 40 40s40-17.9 40-40v-88h184c30.9 0 56 25.1 56 56v28.5l80-46.2c15.3-8.9 20.5-28.4 11.7-43.7z" fill="currentColor" /></svg></div>
                         <h3>Terapia Sistémica Breve: Vuestras Soluciones</h3>
                         <p>Cada pareja es un mundo. No hay recetas mágicas. Mi papel es ayudaros a descubrir qué es lo que SÍ funciona entre vosotros (aunque ahora parezca poco) y a amplificarlo. Identificaremos los patrones que os bloquean y, juntos, diseñaremos pequeños cambios que generen grandes diferencias.</p>
@@ -247,7 +209,7 @@
                     <p class="section-subtitle">LA OPINIÓN DE MIS CLIENTES</p>
                     <h2 class="section-title">Confianza construida sesión a sesión</h2>
                 </div>
-                <div class="testimonial-slider-container">
+                <div class="testimonial-slider-container carousel">
                     <div class="testimonial-slider">
                         <div class="testimonial-slide">
                             <div class="testimonial-card">
@@ -389,7 +351,7 @@
                     <h2 class="section-title">Tarifa Terapia de Pareja</h2>
                     <p>Mi compromiso es con una terapia honesta y breve. No uso bonos porque no quiero que paguéis por más sesiones de las que realmente necesitáis.</p>
                 </div>
-                <div class="tarifa-card highlight">
+                <div class="tarifa-card pricing-card card highlight">
                     <h3>Sesión de Pareja</h3>
                     <div class="price">70€</div>
                     <p class="duration">Hasta 90 minutos | Presencial u Online</p>
