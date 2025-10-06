@@ -402,3 +402,49 @@ main .tarifa-card .icon{
 footer .icon,
 .star-rating .icon, .star-rating svg, .star-rating img{ width:inherit; height:inherit; }
 
+/* === Iconos en cards de contenido → 32px === */
+.section .card:not(.tarifa-card) .icon,
+.specialization-card .icon,
+.value-card .icon,
+.benefit-card .icon,
+.icon-wrapper > .icon {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
+
+/* Forzar también los tres iconos de "Un enfoque diferente" (home) */
+#enfoque-diferente .card .icon,
+#como-trabajo .card .icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* Mantener tarifas (checks) sin cambios */
+.tarifa-card .icon,
+.tarifa-card .icon img,
+.tarifa-card .icon svg {
+  width: inherit;
+  height: inherit;
+}
+
+/* === Centrado de iconos === */
+/* Parejas → "Un enfoque científico y colaborativo" */
+#enfoque-cientifico .card .icon,
+.pareja-page .section.enfoque .card .icon {
+  display: block;
+  margin-inline: auto;
+}
+
+/* Online → "Cómo funciona" */
+#como-funciona .card .icon,
+.online-page .section.como-funciona .card .icon {
+  display: block;
+  margin-inline: auto;
+}
+
+/* Guardarraíles */
+footer .icon,
+.star-rating .icon,
+.star-rating svg,
+.star-rating img { width: inherit; height: inherit; }
