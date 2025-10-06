@@ -2,6 +2,10 @@
 
 .testimonials-section { background-color: var(--bg-lighter); }
 
+.testimonials-section .carousel {
+    min-height: 220px;
+}
+
 .testimonial-card {
     display: flex;
     flex-direction: column;
