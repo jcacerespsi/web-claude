@@ -496,31 +496,6 @@
         </div>
     </div>
 
-    <script>
-    (function(){
-      if(!('PerformanceObserver' in window) || !('URLSearchParams' in window)) return;
-      const params = new URLSearchParams(window.location.search);
-      if(params.get('cls-debug') !== '1') return;
-      try {
-        const po = new PerformanceObserver((list)=>{
-          for (const entry of list.getEntries()){
-            if (entry.hadRecentInput) continue;
-            entry.sources?.forEach((source)=>{
-              const el = source.node;
-              if (!(el instanceof Element)) return;
-              el.style.outline = '2px solid rgba(255,0,0,.85)';
-              el.style.outlineOffset = '2px';
-              console.warn('CLS source:', el, 'value:', entry.value, entry);
-            });
-          }
-        });
-        po.observe({type:'layout-shift', buffered:true});
-      } catch (error) {
-        console.error('CLS debug observer failed', error);
-      }
-    })();
-    </script>
-
     <script src="/js/main.js" defer></script>
     <script src="/js/cookies.js" defer></script>
 </body>
