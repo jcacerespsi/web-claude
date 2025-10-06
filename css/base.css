@@ -27,6 +27,11 @@
     --fs-h4: clamp(18px, 2.2vw, 22px);
     --fs-h5: 16px;
     --fs-h6: 14px;
+    --icon-size-base: 20px;         /* no tocar */
+    --icon-size-card: 28px;          /* cards de contenido */
+    --icon-size-cta: 22px;           /* botones CTA (incluido WhatsApp en botones) */
+    --icon-size-fab: 28px;           /* botón flotante WhatsApp */
+    --icon-size-burger: 24px;        /* menú hamburguesa en móvil */
 }
 
 * {
@@ -52,8 +57,8 @@ html,body{font-synthesis-weight:none}
 
 img.icon,
 svg.icon {
-    width: 20px;
-    height: 20px;
+    width: var(--icon-size-base);
+    height: var(--icon-size-base);
     vertical-align: middle;
 }
 
