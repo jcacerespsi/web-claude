@@ -158,6 +158,58 @@ section#especializacion .grid-2 > a {
     font-size: initial;
 }
 
+/* === Iconos en cards de contenido === */
+/* Base: 30px para cards genéricas (excluye tarifas) */
+
+.section .card:not(.tarifa-card) .icon,
+.specialization-card .icon,
+.value-card .icon,
+.benefit-card .icon,
+.icon-wrapper > .icon {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+/* Forzar también los tres iconos de "Un enfoque diferente" (home) */
+#como-trabajo .card .icon {
+    width: 30px;
+    height: 30px;
+}
+
+#como-trabajo .icon-slot {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+}
+
+/* Mantener tarifas como están (checks) */
+.tarifa-card .icon,
+.tarifa-card .icon img,
+.tarifa-card .icon svg {
+    width: inherit;
+    height: inherit;
+}
+
+/* === Centrado de iconos en secciones específicas === */
+/* Parejas → "Un enfoque científico y colaborativo" */
+#metodo .card .icon {
+    display: block;
+    margin-inline: auto;
+}
+
+/* Online → "Cómo funciona" */
+#como-funciona .card .icon {
+    display: block;
+    margin-inline: auto;
+}
+
+/* Guardarraíles: no tocar footer ni estrellas */
+footer .icon,
+.star-rating .icon,
+.star-rating svg,
+.star-rating img { width: inherit; height: inherit; }
+
 .specialization-card .icon-wrapper {
     color: var(--earth);
 }
