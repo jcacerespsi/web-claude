@@ -395,17 +395,12 @@ footer .icon,
 
 .whatsapp-float {
     position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 16px;
-    right: 16px;
     background-color: #25D366;
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
     box-shadow: var(--shadow-md);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     z-index: 99999;
@@ -505,8 +500,53 @@ footer .icon,
   margin-inline: auto;
 }
 
+:root{
+  --tap-target: 44px;
+  --fab-offset-mobile: 16px;   /* separación estándar móvil */
+  --fab-offset-desktop: 24px;  /* separación estándar desktop */
+  --wa-fab-mobile: 44px;       /* tamaño icono móvil */
+  --wa-fab-desktop: 50px;      /* tamaño icono desktop */
+}
+
+/* Contenedor FAB WhatsApp (ajusta a tus clases/ID reales) */
+#whatsapp-fab, .whatsapp-fab, .whatsapp-button, .whatsapp-float{
+  right: var(--fab-offset-mobile);
+  bottom: var(--fab-offset-mobile);
+  width: calc(var(--wa-fab-mobile) + 16px);   /* aire: 8px por lado */
+  height: calc(var(--wa-fab-mobile) + 16px);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+}
+#whatsapp-fab .icon, .whatsapp-fab .icon, .whatsapp-button .icon, .whatsapp-float .icon{
+  width: var(--wa-fab-mobile);
+  height: var(--wa-fab-mobile);
+  display: block;
+}
+
+/* Desktop: mayor icono y mayor separación a bordes */
+@media (min-width:1024px){
+  #whatsapp-fab, .whatsapp-fab, .whatsapp-button, .whatsapp-float{
+    right: var(--fab-offset-desktop);
+    bottom: var(--fab-offset-desktop);
+    width: calc(var(--wa-fab-desktop) + 16px);
+    height: calc(var(--wa-fab-desktop) + 16px);
+  }
+  #whatsapp-fab .icon, .whatsapp-fab .icon, .whatsapp-button .icon, .whatsapp-float .icon{
+    width: var(--wa-fab-desktop);
+    height: var(--wa-fab-desktop);
+  }
+}
+
+/* Safe areas iOS */
+@supports (padding: env(safe-area-inset-bottom)){
+  #whatsapp-fab, .whatsapp-fab, .whatsapp-button, .whatsapp-float{
+    margin-right: env(safe-area-inset-right);
+    margin-bottom: env(safe-area-inset-bottom);
+  }
+}
+
 /* Guardarraíles */
 footer .icon,
-.star-rating .icon,
-.star-rating svg,
-.star-rating img { width: inherit; height: inherit; }
+.star-rating .icon, .star-rating svg, .star-rating img{ width: inherit; height: inherit; }
+
