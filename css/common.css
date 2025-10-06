@@ -339,3 +339,14 @@ section#especializacion .grid-2 > a {
         max-width: 100%;
     }
 }
+
+/* Iconos en cards de contenido (no footer, no estrellas) */
+main .section .card .icon,
+main .specialization-card .icon,
+main .tarifa-card .icon{
+  width:28px; height:28px; vertical-align:middle;
+}
+/* Salvaguardas explícitas */
+footer .icon,
+.star-rating .icon, .star-rating svg, .star-rating img{ width:inherit; height:inherit; }
+
