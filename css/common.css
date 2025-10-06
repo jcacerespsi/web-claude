@@ -250,12 +250,6 @@ section#especializacion .grid-2 > a {
   }
 }
 
-/* Hamburguesa móvil: icono 24px y tap target 44px */
-.hamburger-menu{ width: var(--tap-target); height: var(--tap-target); display:grid; place-items:center; }
-.hamburger-menu .icon, .hamburger .icon, .hamburger-menu svg, .hamburger svg{
-  width: 24px; height: 24px; display:block;
-}
-
 /* Guardarraíles: NO tocar footer ni estrellas */
 footer .icon,
 .star-rating .icon, .star-rating svg, .star-rating img{ width: inherit; height: inherit; }
@@ -550,3 +544,32 @@ footer .icon,
 footer .icon,
 .star-rating .icon, .star-rating svg, .star-rating img{ width: inherit; height: inherit; }
 
+:root{ --tap-target: 44px; }
+
+/* Contenedor del botón: tamaño táctil y centrado del icono */
+.hamburger-menu{
+  width: var(--tap-target);
+  height: var(--tap-target);
+  display: grid;
+  place-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.hamburger-menu .icon,
+.hamburger .icon,
+.hamburger-menu svg,
+.hamburger svg{
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Sin cambios de altura del header al abrir/cerrar */
+@media (min-width:1024px){
+  header.site-header{ min-height:72px; }
+}
+
+/* Accesibilidad: foco visible para teclado */
+.hamburger-menu:focus-visible{
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
