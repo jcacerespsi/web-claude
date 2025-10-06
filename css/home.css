@@ -3,3 +3,9 @@
 @import url('./space.css');
 @import url('./testimonios.css');
 @import url('./mapa.css');
+
+@media (min-width: 1024px) {
+    main > .section:first-of-type .section-header {
+        min-height: 120px;
+    }
+}

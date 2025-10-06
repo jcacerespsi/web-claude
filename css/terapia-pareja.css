@@ -3,3 +3,13 @@
 @import url('./testimonios.css');
 @import url('./mapa.css');
 @import url('./gottman.css');
+
+.about-section .about-image {
+    aspect-ratio: 800 / 870;
+}
+
+@media (min-width: 1024px) {
+    main > .section:first-of-type .section-header {
+        min-height: 120px;
+    }
+}

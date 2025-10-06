@@ -1,39 +1,7 @@
 /* Base shared styles for the site */
-@font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('/fonts/inter-v20-latin-regular.woff2') format('woff2');
-    ascent-override: 90%;
-    descent-override: 22%;
-    line-gap-override: 0%;
-    size-adjust: 102%;
-}
-
-@font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url('/fonts/inter-v20-latin-600.woff2') format('woff2');
-    ascent-override: 90%;
-    descent-override: 22%;
-    line-gap-override: 0%;
-    size-adjust: 102%;
-}
-
-@font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url('/fonts/inter-v20-latin-700.woff2') format('woff2');
-    ascent-override: 90%;
-    descent-override: 22%;
-    line-gap-override: 0%;
-    size-adjust: 102%;
-}
+@font-face{font-family:'Inter';src:url('/fonts/inter-v20-latin-regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;ascent-override:90%;descent-override:22%;line-gap-override:0%;size-adjust:102%}
+@font-face{font-family:'Inter';src:url('/fonts/inter-v20-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;ascent-override:90%;descent-override:22%;line-gap-override:0%;size-adjust:102%}
+@font-face{font-family:'Inter';src:url('/fonts/inter-v20-latin-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;ascent-override:90%;descent-override:22%;line-gap-override:0%;size-adjust:102%}
 
 :root {
     --accent-empathy: #D97757;
@@ -80,15 +48,12 @@ body {
     font-size: 17px;
 }
 
-html,
-body {
-    font-synthesis-weight: none;
-}
+html,body{font-synthesis-weight:none}
 
 img.icon,
 svg.icon {
-    width: 1em;
-    height: 1em;
+    width: 20px;
+    height: 20px;
     vertical-align: middle;
 }
 
@@ -322,7 +287,7 @@ strong {
 @media (min-width: 1024px) {
     header.site-header {
         min-height: 72px;
-        transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, opacity 0.2s ease, transform 0.2s ease; /* no height transitions */
+        transition: opacity 0.2s, transform 0.2s;
     }
 }
 

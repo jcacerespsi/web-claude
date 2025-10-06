@@ -18,3 +18,9 @@
 .eficacia .about-image {
     aspect-ratio: auto;
 }
+
+@media (min-width: 1024px) {
+    main > .section:first-of-type .section-header {
+        min-height: 120px;
+    }
+}
