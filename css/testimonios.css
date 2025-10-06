@@ -219,3 +219,23 @@
     .prev-btn { left: 5px; }
     .next-btn { right: 5px; }
 }
+
+/* === Reseñas / Testimonios: fondo blanco + ribete azul-gris === */
+:root{
+  --ribete-azul: #6B7A99; /* color usado en el resto de la web */
+}
+
+.testimonials-section .testimonial-card,
+.reviews .testimonial-card,
+.opiniones .review-card,
+.swiper-slide .testimonial-card {
+  background: #FFFFFF;
+  border-left: 4px solid var(--ribete-azul, #6B7A99);
+  border-radius: var(--card-radius, 16px);
+  box-shadow: var(--card-shadow, 0 2px 10px rgba(0,0,0,.06));
+  padding: var(--card-padding, 1rem 1.25rem);
+}
+
+/* Guardarraíles: no tocar estrellas ni precios */
+.star-rating, .star-rating svg, .star-rating img { /* sin cambios */ }
+.tarifa-card { /* sin cambios */ }
