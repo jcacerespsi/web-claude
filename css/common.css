@@ -573,3 +573,46 @@ footer .icon,
   outline: 2px solid #000;
   outline-offset: 2px;
 }
+
+/* Header responsive menu adjustments */
+.hamburger-menu {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+}
+
+.nav-menu {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .hamburger-menu {
+        display: grid;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hamburger-menu {
+        display: none;
+    }
+
+    .nav-menu {
+        display: flex;
+        gap: 1.8rem;
+        align-items: center;
+    }
+    header.site-header {
+        min-height: 72px;
+    }
+}
+
+@media (max-width: 1023.98px) {
+    .nav-menu.is-open {
+        display: block;
+    }
+}
