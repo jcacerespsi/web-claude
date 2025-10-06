@@ -33,33 +33,9 @@
     <link rel="preload" href="/fonts/inter-v20-latin-600.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/inter-v20-latin-700.woff2" as="font" type="font/woff2" crossorigin>
     <style>
-    @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('/fonts/inter-v20-latin-regular.woff2') format('woff2');
-    ascent-override: 90%;
-    descent-override: 22%;
-    line-gap-override: 0%;
-    size-adjust: 102%;
-    }
-
-    @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url('/fonts/inter-v20-latin-600.woff2') format('woff2');
-    }
-
-    @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url('/fonts/inter-v20-latin-700.woff2') format('woff2');
-    }
+    @font-face{font-family:'Inter';src:url('/fonts/inter-v20-latin-regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;ascent-override:90%;descent-override:22%;line-gap-override:0%;size-adjust:102%}
+    @font-face{font-family:'Inter';src:url('/fonts/inter-v20-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;ascent-override:90%;descent-override:22%;line-gap-override:0%;size-adjust:102%}
+    @font-face{font-family:'Inter';src:url('/fonts/inter-v20-latin-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;ascent-override:90%;descent-override:22%;line-gap-override:0%;size-adjust:102%}
     </style>
     
     <!-- CSS CRÍTICO - Previene CLS -->
@@ -160,7 +136,7 @@
                     class="logo-img" 
                     width="240" 
                     height="70"
-                    fetchpriority="high">
+                    fetchpriority="high" decoding="async">
             </a>
             <ul class="nav-menu">
                 <li><a href="terapia-pareja.html">Terapia de Pareja</a></li>
@@ -171,7 +147,7 @@
                 <li><a href="https://wa.me/34621372442?text=Hola%20Javi,%20me%20gustaría%20pedir%20información." target="_blank" rel="noopener" class="btn btn-primary">Pedir Cita</a></li>
             </ul>
             <button class="hamburger-menu" id="hamburger-btn" aria-label="Abrir menú">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M16 96a16 16 0 0 1 16-16h384a16 16 0 0 1 0 32H32A16 16 0 0 1 16 96Zm0 160a16 16 0 0 1 16-16h384a16 16 0 0 1 0 32H32a16 16 0 0 1-16-16Zm16 144a16 16 0 0 0 0 32h384a16 16 0 0 0 0-32H32Z" fill="currentColor" />
 </svg>
             </button>
@@ -198,7 +174,7 @@
                 <h1>¿La ansiedad o la tristeza te están alejando de la vida que deseas?</h1>
                 <p class="subtitle">No tienes por qué seguir así. Te ofrezco una terapia breve y colaborativa, un espacio de confianza donde, juntos, encontraremos tus recursos para que recuperes la calma, la claridad y el control.</p>
                 <div class="hero-actions">
-                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20me%20gustaría%20pedir%20información%20para%20una%20cita%20presencial." target="_blank" rel="noopener" class="btn btn-primary"><img src="icons/whatsapp.svg" class="icon" alt="WhatsApp" width="20" height="20" decoding="async"> Contactar por WhatsApp</a>
+                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20me%20gustaría%20pedir%20información%20para%20una%20cita%20presencial." target="_blank" rel="noopener" class="btn btn-primary"><img src="icons/whatsapp.svg" class="icon" alt="WhatsApp" decoding="async" width="20" height="20"> Contactar por WhatsApp</a>
                     <a href="#tarifas" class="btn btn-secondary">Ver Tarifas</a>
                 </div>
             </div>
@@ -214,17 +190,17 @@
                 </div>
                 <div class="grid-3">
                     <div class="info-card">
-                        <div class="icon-wrapper text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em"><path d="M416 208C416 305.2 330 384 224 384C197.3 384 171.9 379 148.8 370L67.2 413.2C57.9 418.1 46.5 416.4 39 409C31.5 401.6 29.8 390.1 34.8 380.8L70.4 313.6C46.3 284.2 32 247.6 32 208C32 110.8 118 32 224 32C330 32 416 110.8 416 208zM416 576C321.9 576 243.6 513.9 227.2 432C347.2 430.5 451.5 345.1 463 229.3C546.3 248.5 608 317.6 608 400C608 439.6 593.7 476.2 569.6 505.6L605.2 572.8C610.1 582.1 608.4 593.5 601 601C593.6 608.5 582.1 610.2 572.8 605.2L491.2 562C468.1 571 442.7 576 416 576z" fill="currentColor" /></svg></div>
+                        <div class="icon-wrapper text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor"><path d="M416 208C416 305.2 330 384 224 384C197.3 384 171.9 379 148.8 370L67.2 413.2C57.9 418.1 46.5 416.4 39 409C31.5 401.6 29.8 390.1 34.8 380.8L70.4 313.6C46.3 284.2 32 247.6 32 208C32 110.8 118 32 224 32C330 32 416 110.8 416 208zM416 576C321.9 576 243.6 513.9 227.2 432C347.2 430.5 451.5 345.1 463 229.3C546.3 248.5 608 317.6 608 400C608 439.6 593.7 476.2 569.6 505.6L605.2 572.8C610.1 582.1 608.4 593.5 601 601C593.6 608.5 582.1 610.2 572.8 605.2L491.2 562C468.1 571 442.7 576 416 576z" fill="currentColor" /></svg></div>
                         <h3>Comunicación Asertiva</h3>
                         <p>Expresa tus necesidades y pon límites de forma clara y respetuosa, mejorando tus vínculos.</p>
                     </div>
                     <div class="info-card">
-                        <div class="icon-wrapper text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em"><path d="M184 120C184 89.1 209.1 64 240 64L264 64C281.7 64 296 78.3 296 96L296 544C296 561.7 281.7 576 264 576L232 576C202.2 576 177.1 555.6 170 528C169.3 528 168.7 528 168 528C123.8 528 88 492.2 88 448C88 430 94 413.4 104 400C84.6 385.4 72 362.2 72 336C72 305.1 89.6 278.2 115.2 264.9C108.1 252.9 104 238.9 104 224C104 179.8 139.8 144 184 144L184 120zM456 120L456 144C500.2 144 536 179.8 536 224C536 239 531.9 253 524.8 264.9C550.5 278.2 568 305 568 336C568 362.2 555.4 385.4 536 400C546 413.4 552 430 552 448C552 492.2 516.2 528 472 528C471.3 528 470.7 528 470 528C462.9 555.6 437.8 576 408 576L376 576C358.3 576 344 561.7 344 544L344 96C344 78.3 358.3 64 376 64L400 64C430.9 64 456 89.1 456 120z" fill="currentColor" /></svg></div>
+                        <div class="icon-wrapper text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor"><path d="M184 120C184 89.1 209.1 64 240 64L264 64C281.7 64 296 78.3 296 96L296 544C296 561.7 281.7 576 264 576L232 576C202.2 576 177.1 555.6 170 528C169.3 528 168.7 528 168 528C123.8 528 88 492.2 88 448C88 430 94 413.4 104 400C84.6 385.4 72 362.2 72 336C72 305.1 89.6 278.2 115.2 264.9C108.1 252.9 104 238.9 104 224C104 179.8 139.8 144 184 144L184 120zM456 120L456 144C500.2 144 536 179.8 536 224C536 239 531.9 253 524.8 264.9C550.5 278.2 568 305 568 336C568 362.2 555.4 385.4 536 400C546 413.4 552 430 552 448C552 492.2 516.2 528 472 528C471.3 528 470.7 528 470 528C462.9 555.6 437.8 576 408 576L376 576C358.3 576 344 561.7 344 544L344 96C344 78.3 358.3 64 376 64L400 64C430.9 64 456 89.1 456 120z" fill="currentColor" /></svg></div>
                         <h3>Calma Mental</h3>
                         <p>Aprende a gestionar el "runrún" de la ansiedad y a dirigir tu atención hacia lo que de verdad importa.</p>
                     </div>
                     <div class="info-card">
-                        <div class="icon-wrapper text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em"><path d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z" fill="currentColor" /></svg></div>
+                        <div class="icon-wrapper text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor"><path d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z" fill="currentColor" /></svg></div>
                         <h3>Relaciones Sanas</h3>
                         <p>Construye conexiones más auténticas y seguras con tu pareja, familia y amigos.</p>
                     </div>
@@ -263,7 +239,7 @@
         <section class="section" id="quien-soy" style="background-color: var(--bg-lighter);">
             <div class="container about-section">
                 <div style="text-align: center;">
-                    <img src="images/foto-javi-caceres.webp" alt="Retrato profesional de Javi Cáceres, psicólogo en Roses." class="about-image" loading="lazy" width="500" height="656">
+                    <img src="images/foto-javi-caceres.webp" alt="Retrato profesional de Javi Cáceres, psicólogo en Roses." class="about-image" loading="lazy" width="500" height="656" decoding="async">
                 </div>
                 <div>
                     <p class="section-subtitle">Hola, soy Javi Cáceres</p>
@@ -315,13 +291,13 @@
                         <div class="price">55€</div>
                         <p class="duration">55 minutos</p>
                         <ul>
-                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M438.6 105.4a24 24 0 0 1 0 33.9l-256 256a24 24 0 0 1-33.9 0l-139-139a24 24 0 1 1 33.9-33.9L168 328.4 404.7 105.4a24 24 0 0 1 33.9 0Z" fill="currentColor" />
 </svg></span> Comodidad desde tu hogar.</li>
-                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M438.6 105.4a24 24 0 0 1 0 33.9l-256 256a24 24 0 0 1-33.9 0l-139-139a24 24 0 1 1 33.9-33.9L168 328.4 404.7 105.4a24 24 0 0 1 33.9 0Z" fill="currentColor" />
 </svg></span> Misma eficacia que la presencial.</li>
-                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M438.6 105.4a24 24 0 0 1 0 33.9l-256 256a24 24 0 0 1-33.9 0l-139-139a24 24 0 1 1 33.9-33.9L168 328.4 404.7 105.4a24 24 0 0 1 33.9 0Z" fill="currentColor" />
 </svg></span> Flexibilidad horaria total.</li>
                         </ul>
@@ -332,13 +308,13 @@
                         <div class="price">65€</div>
                         <p class="duration">55 minutos | En mi consulta de Roses</p>
                         <ul>
-                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M438.6 105.4a24 24 0 0 1 0 33.9l-256 256a24 24 0 0 1-33.9 0l-139-139a24 24 0 1 1 33.9-33.9L168 328.4 404.7 105.4a24 24 0 0 1 33.9 0Z" fill="currentColor" />
 </svg></span> El valor del encuentro cara a cara.</li>
-                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M438.6 105.4a24 24 0 0 1 0 33.9l-256 256a24 24 0 0 1-33.9 0l-139-139a24 24 0 1 1 33.9-33.9L168 328.4 404.7 105.4a24 24 0 0 1 33.9 0Z" fill="currentColor" />
 </svg></span> Un espacio 100% seguro y confidencial.</li>
-                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M438.6 105.4a24 24 0 0 1 0 33.9l-256 256a24 24 0 0 1-33.9 0l-139-139a24 24 0 1 1 33.9-33.9L168 328.4 404.7 105.4a24 24 0 0 1 33.9 0Z" fill="currentColor" />
 </svg></span> Atención cercana y personalizada.</li>
                         </ul>
@@ -349,13 +325,13 @@
                         <div class="price">70€</div>
                         <p class="duration">Hasta 90 minutos</p>
                         <ul>
-                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M438.6 105.4a24 24 0 0 1 0 33.9l-256 256a24 24 0 0 1-33.9 0l-139-139a24 24 0 1 1 33.9-33.9L168 328.4 404.7 105.4a24 24 0 0 1 33.9 0Z" fill="currentColor" />
 </svg></span> Espacio neutral para ambos.</li>
-                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M438.6 105.4a24 24 0 0 1 0 33.9l-256 256a24 24 0 0 1-33.9 0l-139-139a24 24 0 1 1 33.9-33.9L168 328.4 404.7 105.4a24 24 0 0 1 33.9 0Z" fill="currentColor" />
 </svg></span> Método Gottman y TSB.</li>
-                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                            <li><span class="text-earth"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M438.6 105.4a24 24 0 0 1 0 33.9l-256 256a24 24 0 0 1-33.9 0l-139-139a24 24 0 1 1 33.9-33.9L168 328.4 404.7 105.4a24 24 0 0 1 33.9 0Z" fill="currentColor" />
 </svg></span> Presencial en Roses y Online.</li>
                         </ul>
@@ -379,7 +355,7 @@
 
                                 <div class="testimonial-header">
 
-                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"></div>
+                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"></div>
 
                                 </div>
 
@@ -398,7 +374,7 @@
 
                                 <div class="testimonial-header">
 
-                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"></div>
+                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"></div>
 
                                 </div>
 
@@ -417,7 +393,7 @@
 
                                 <div class="testimonial-header">
 
-                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"></div>
+                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"></div>
 
                                 </div>
 
@@ -436,7 +412,7 @@
 
                                 <div class="testimonial-header">
 
-                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"></div>
+                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"></div>
 
                                 </div>
 
@@ -455,7 +431,7 @@
 
                                 <div class="testimonial-header">
 
-                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"></div>
+                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"></div>
 
                                 </div>
 
@@ -474,7 +450,7 @@
 
                                 <div class="testimonial-header">
 
-                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"><img src="icons/star-rating.svg" class="icon" alt="Estrella" width="20" height="20" decoding="async"></div>
+                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"></div>
 
                                 </div>
 
@@ -489,10 +465,10 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="slider-btn prev-btn" aria-label="Reseña anterior"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                    <button type="button" class="slider-btn prev-btn" aria-label="Reseña anterior"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M224 32a24 24 0 0 1 0 34L82.5 208 224 346a24 24 0 1 1-34 34l-160-160a24 24 0 0 1 0-34l160-160A24 24 0 0 1 224 32Z" fill="currentColor" />
 </svg></button>
-                    <button type="button" class="slider-btn next-btn" aria-label="Siguiente reseña"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                    <button type="button" class="slider-btn next-btn" aria-label="Siguiente reseña"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M32 32a24 24 0 0 1 34 0l160 160a24 24 0 0 1 0 34l-160 160a24 24 0 0 1-34-34L173.5 208 32 66a24 24 0 0 1 0-34Z" fill="currentColor" />
 </svg></button>
                 </div>
@@ -513,7 +489,7 @@
                      <p class="section-subtitle">Tu Espacio Seguro</p>
                     <h2 class="section-title">Un entorno diseñado para tu comodidad y confianza</h2>
                 </div>
-                <img src="images/despacho-general.webp" alt="Consulta de psicología de Javi Cáceres en Roses, un espacio seguro y tranquilo." class="space-image" loading="lazy" width="1319" height="768">
+                <img src="images/despacho-general.webp" alt="Consulta de psicología de Javi Cáceres en Roses, un espacio seguro y tranquilo." class="space-image" loading="lazy" width="1319" height="768" decoding="async">
             </div>
         </section>
 
@@ -551,37 +527,37 @@
                 </div>
                 <div class="faq-list" style="max-width: 800px; margin: 0 auto;">
                     <div class="faq-item">
-                        <div class="faq-question"><span>¿Cómo sé si realmente necesito ir al psicólogo?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                        <div class="faq-question"><span>¿Cómo sé si realmente necesito ir al psicólogo?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M32 32a24 24 0 0 1 34 0L256 181.5 446 32a24 24 0 1 1 34 34l-192 192a24 24 0 0 1-34 0L32 66a24 24 0 0 1 0-34Z" fill="currentColor" />
 </svg></div>
                         <div class="faq-answer"><p>Si sientes que un problema (ansiedad, tristeza, estrés) interfiere en tu vida diaria, te impide disfrutar o te sientes atascado, la terapia puede ser de gran ayuda. No hace falta "tocar fondo". A veces, una simple conversación puede clarificar si es el momento adecuado para ti.</p></div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-question"><span>¿Qué pasará en la primera sesión? Da un poco de miedo...</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                        <div class="faq-question"><span>¿Qué pasará en la primera sesión? Da un poco de miedo...</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M32 32a24 24 0 0 1 34 0L256 181.5 446 32a24 24 0 1 1 34 34l-192 192a24 24 0 0 1-34 0L32 66a24 24 0 0 1 0-34Z" fill="currentColor" />
 </svg></div>
                         <div class="faq-answer"><p>Es normal sentir nervios. La primera sesión es simplemente una conversación para conocernos. Me explicarás qué te trae a consulta, y yo te explicaré cómo trabajo. El objetivo es que te sientas cómodo/a y seguro/a, sin juicios. Desde este primer encuentro ya empezaremos a buscar pequeñas excepciones al problema.</p></div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-question"><span>¿Cuánto tiempo dura la terapia? No quiero estar años...</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                        <div class="faq-question"><span>¿Cuánto tiempo dura la terapia? No quiero estar años...</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M32 32a24 24 0 0 1 34 0L256 181.5 446 32a24 24 0 1 1 34 34l-192 192a24 24 0 0 1-34 0L32 66a24 24 0 0 1 0-34Z" fill="currentColor" />
 </svg></div>
                         <div class="faq-answer"><p>Mi enfoque es la Terapia Breve. La media de sesiones se sitúa entre 6 y 8. A veces son 4, otras pueden ser 15. El objetivo no es que dependas de la terapia, sino que adquieras las herramientas para ser tu propio/a terapeuta lo antes posible.</p></div>
                     </div>
                      <div class="faq-item">
-                        <div class="faq-question"><span>¿Todo lo que cuente es confidencial?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                        <div class="faq-question"><span>¿Todo lo que cuente es confidencial?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M32 32a24 24 0 0 1 34 0L256 181.5 446 32a24 24 0 1 1 34 34l-192 192a24 24 0 0 1-34 0L32 66a24 24 0 0 1 0-34Z" fill="currentColor" />
 </svg></div>
                         <div class="faq-answer"><p>Absolutamente. La confidencialidad es la base de la terapia y está protegida por el código deontológico. Todo lo que hablemos en sesión es estrictamente privado, salvo en situaciones de riesgo grave para ti o para terceros, tal y como marca la ley.</p></div>
                     </div>
                      <div class="faq-item">
-                        <div class="faq-question"><span>¿Con qué frecuencia son las sesiones?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                        <div class="faq-question"><span>¿Con qué frecuencia son las sesiones?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M32 32a24 24 0 0 1 34 0L256 181.5 446 32a24 24 0 1 1 34 34l-192 192a24 24 0 0 1-34 0L32 66a24 24 0 0 1 0-34Z" fill="currentColor" />
 </svg></div>
                         <div class="faq-answer"><p>Para empezar y coger impulso, lo ideal suele ser una frecuencia semanal o quincenal. A medida que vayas notando mejoría y aplicando los cambios, iremos espaciando las sesiones para fomentar tu autonomía, que es el objetivo final.</p></div>
                     </div>
                      <div class="faq-item">
-                        <div class="faq-question"><span>¿Cómo se realiza el pago de las sesiones presenciales?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="1em" height="1em">
+                        <div class="faq-question"><span>¿Cómo se realiza el pago de las sesiones presenciales?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M32 32a24 24 0 0 1 34 0L256 181.5 446 32a24 24 0 1 1 34 34l-192 192a24 24 0 0 1-34 0L32 66a24 24 0 0 1 0-34Z" fill="currentColor" />
 </svg></div>
                         <div class="faq-answer"><p>El pago se puede realizar cómodamente al finalizar la sesión en la consulta, ya sea en efectivo o a través de Bizum, como prefieras.</p></div>
@@ -596,7 +572,7 @@
                 <h2>El cambio empieza con una conversación. ¿Hablamos?</h2>
                 <p>Dar el primer paso es el más valiente. Escríbeme sin compromiso para resolver cualquier duda o para concertar una primera cita. Estoy aquí para escucharte.</p>
                 <div class="hero-actions" style="margin-top: 2rem;">
-                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20me%20gustaría%20pedir%20información%20para%20una%20cita." target="_blank" rel="noopener" class="btn btn-primary"><img src="icons/whatsapp.svg" class="icon" alt="WhatsApp" width="20" height="20" decoding="async"> Escríbeme por WhatsApp</a>
+                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20me%20gustaría%20pedir%20información%20para%20una%20cita." target="_blank" rel="noopener" class="btn btn-primary"><img src="icons/whatsapp.svg" class="icon" alt="WhatsApp" decoding="async" width="20" height="20"> Escríbeme por WhatsApp</a>
                 </div>
             </div>
         </section>
@@ -612,7 +588,7 @@
                     width="500"
                     height="224"
                     loading="lazy"
-                    style="max-width: 200px; height: auto; margin-top: 1rem; border-radius: 8px;">
+                    style="max-width: 200px; height: auto; margin-top: 1rem; border-radius: 8px;" decoding="async">
             </div>
             <div class="footer-col">
                 <h3 class="footer-heading">Servicios</h3>
@@ -626,13 +602,13 @@
                 <h3 class="footer-heading">Contacto</h3>
                 <ul>
                     <li>
-                        <span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="icon" style="margin-right: 0.5rem;" aria-hidden="true" focusable="false" width="1em" height="1em"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z" fill="currentColor" /></svg></span>
+                        <span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="icon" style="margin-right: 0.5rem;" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z" fill="currentColor" /></svg></span>
                         <a href="https://maps.app.goo.gl/qK8TCrotW8m6P8oCA" target="_blank" rel="noopener">
                             Carrer del Doctor Hermenegild Arruga, 76, 2n, 2a, Roses
                         </a>
                     </li>
-                    <li><a href="tel:+34621372442"><span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" style="margin-right: 0.5rem;" role="img" aria-label="Teléfono" focusable="false" width="1em" height="1em"><path d="M224.2 89C216.3 70.1 195.7 60.1 176.1 65.4L170.6 66.9C106 84.5 50.8 147.1 66.9 223.3C104 398.3 241.7 536 416.7 573.1C493 589.3 555.5 534 573.1 469.4L574.6 463.9C580 444.2 569.9 423.6 551.1 415.8L453.8 375.3C437.3 368.4 418.2 373.2 406.8 387.1L368.2 434.3C297.9 399.4 241.3 341 208.8 269.3L253 233.3C266.9 222 271.6 202.9 264.8 186.3L224.2 89z" fill="currentColor" /></svg></span>621 372 442</a></li>
-                    <li><a href="mailto:javicaceres@cop.es"><span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" style="margin-right: 0.5rem;" role="img" aria-label="Correo" focusable="false" width="1em" height="1em"><path d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L377.6 408.8C343.5 434.4 296.5 434.4 262.4 408.8L64 260z" fill="currentColor" /></svg></span>javicaceres@cop.es</a></li>
+                    <li><a href="tel:+34621372442"><span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" style="margin-right: 0.5rem;" role="img" aria-label="Teléfono" focusable="false" width="20" height="20" fill="currentColor"><path d="M224.2 89C216.3 70.1 195.7 60.1 176.1 65.4L170.6 66.9C106 84.5 50.8 147.1 66.9 223.3C104 398.3 241.7 536 416.7 573.1C493 589.3 555.5 534 573.1 469.4L574.6 463.9C580 444.2 569.9 423.6 551.1 415.8L453.8 375.3C437.3 368.4 418.2 373.2 406.8 387.1L368.2 434.3C297.9 399.4 241.3 341 208.8 269.3L253 233.3C266.9 222 271.6 202.9 264.8 186.3L224.2 89z" fill="currentColor" /></svg></span>621 372 442</a></li>
+                    <li><a href="mailto:javicaceres@cop.es"><span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" style="margin-right: 0.5rem;" role="img" aria-label="Correo" focusable="false" width="20" height="20" fill="currentColor"><path d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L377.6 408.8C343.5 434.4 296.5 434.4 262.4 408.8L64 260z" fill="currentColor" /></svg></span>javicaceres@cop.es</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -648,7 +624,7 @@
         <div class="footer-bottom"><p>&copy; 2025 Javi Cáceres Psicólogo. Todos los derechos reservados.</p></div>
     </footer>
 
-    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20me%20gustaría%20pedir%20información." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"><img src="icons/whatsapp.svg" class="icon" alt="WhatsApp" width="20" height="20" decoding="async"></a>
+    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20me%20gustaría%20pedir%20información." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"><img src="icons/whatsapp.svg" class="icon" alt="WhatsApp" decoding="async" width="20" height="20"></a>
 
     <div class="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-title" aria-describedby="cookie-desc">
         <span id="cookie-title" class="visually-hidden">Preferencias de cookies</span>

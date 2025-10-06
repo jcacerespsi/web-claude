@@ -18,41 +18,9 @@
     <link rel="preload" href="/fonts/inter-v20-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 
     <style>
-    @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('/fonts/inter-v20-latin-regular.woff2') format('woff2');
-    ascent-override: 90%;
-    descent-override: 22%;
-    line-gap-override: 0%;
-    size-adjust: 102%;
-    }
-
-    @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url('/fonts/inter-v20-latin-600.woff2') format('woff2');
-    ascent-override: 90%;
-    descent-override: 22%;
-    line-gap-override: 0%;
-    size-adjust: 102%;
-    }
-
-    @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url('/fonts/inter-v20-latin-700.woff2') format('woff2');
-    ascent-override: 90%;
-    descent-override: 22%;
-    line-gap-override: 0%;
-    size-adjust: 102%;
-    }
+    @font-face{font-family:'Inter';src:url('/fonts/inter-v20-latin-regular.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;ascent-override:90%;descent-override:22%;line-gap-override:0%;size-adjust:102%}
+    @font-face{font-family:'Inter';src:url('/fonts/inter-v20-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;ascent-override:90%;descent-override:22%;line-gap-override:0%;size-adjust:102%}
+    @font-face{font-family:'Inter';src:url('/fonts/inter-v20-latin-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;ascent-override:90%;descent-override:22%;line-gap-override:0%;size-adjust:102%}
     </style>
     <link rel="stylesheet" href="/css/base.css">
     <!-- CSS carregat de forma asíncrona per no bloquejar renderitzat -->
@@ -118,7 +86,7 @@
                     class="logo-img" 
                     width="240" 
                     height="70"
-                    fetchpriority="high">
+                    fetchpriority="high" decoding="async">
             </a>
             <ul class="nav-menu">
                 <li><a href="index.html">Inicio</a></li>
@@ -126,7 +94,7 @@
                 <li><a href="terapia-online.html">Terapia Online</a></li>
             </ul>
             <button class="hamburger-menu" id="hamburger-btn" aria-label="Abrir menú">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
   <path d="M16 96a16 16 0 0 1 16-16h384a16 16 0 0 1 0 32H32A16 16 0 0 1 16 96Zm0 160a16 16 0 0 1 16-16h384a16 16 0 0 1 0 32H32a16 16 0 0 1-16-16Zm16 144a16 16 0 0 0 0 32h384a16 16 0 0 0 0-32H32Z" fill="currentColor" />
 </svg>
             </button>
@@ -154,7 +122,7 @@
             <p style="margin-top: 2rem;">Para una consulta detallada del documento completo, puede acceder al código deontológico vigente directamente:</p>
             <p style="text-align: center; margin: 2rem 0;">
                 <a href="https://arxiu.copc.cat/adjuntos/adjunto_188.1524062657.pdf" target="_blank" rel="noopener noreferrer" style="font-size: 1.1rem;">
-                    <span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" style="margin-right: 0.5rem;" aria-hidden="true" focusable="false"><path d="M128 64C92.7 64 64 92.7 64 128L64 512C64 547.3 92.7 576 128 576L208 576L208 464C208 428.7 236.7 400 272 400L448 400L448 234.5C448 217.5 441.3 201.2 429.3 189.2L322.7 82.7C310.7 70.7 294.5 64 277.5 64L128 64zM389.5 240L296 240C282.7 240 272 229.3 272 216L272 122.5L389.5 240zM272 444C261 444 252 453 252 464L252 592C252 603 261 612 272 612C283 612 292 603 292 592L292 564L304 564C337.1 564 364 537.1 364 504C364 470.9 337.1 444 304 444L272 444zM304 524L292 524L292 484L304 484C315 484 324 493 324 504C324 515 315 524 304 524zM400 444C389 444 380 453 380 464L380 592C380 603 389 612 400 612L432 612C460.7 612 484 588.7 484 560L484 496C484 467.3 460.7 444 432 444L400 444zM420 572L420 484L432 484C438.6 484 444 489.4 444 496L444 560C444 566.6 438.6 572 432 572L420 572zM508 464L508 592C508 603 517 612 528 612C539 612 548 603 548 592L548 548L576 548C587 548 596 539 596 528C596 517 587 508 576 508L548 508L548 484L576 484C587 484 596 475 596 464C596 453 587 444 576 444L528 444C517 444 508 453 508 464z" fill="currentColor" /></svg></span>
+                    <span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" style="margin-right: 0.5rem;" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor"><path d="M128 64C92.7 64 64 92.7 64 128L64 512C64 547.3 92.7 576 128 576L208 576L208 464C208 428.7 236.7 400 272 400L448 400L448 234.5C448 217.5 441.3 201.2 429.3 189.2L322.7 82.7C310.7 70.7 294.5 64 277.5 64L128 64zM389.5 240L296 240C282.7 240 272 229.3 272 216L272 122.5L389.5 240zM272 444C261 444 252 453 252 464L252 592C252 603 261 612 272 612C283 612 292 603 292 592L292 564L304 564C337.1 564 364 537.1 364 504C364 470.9 337.1 444 304 444L272 444zM304 524L292 524L292 484L304 484C315 484 324 493 324 504C324 515 315 524 304 524zM400 444C389 444 380 453 380 464L380 592C380 603 389 612 400 612L432 612C460.7 612 484 588.7 484 560L484 496C484 467.3 460.7 444 432 444L400 444zM420 572L420 484L432 484C438.6 484 444 489.4 444 496L444 560C444 566.6 438.6 572 432 572L420 572zM508 464L508 592C508 603 517 612 528 612C539 612 548 603 548 592L548 548L576 548C587 548 596 539 596 528C596 517 587 508 576 508L548 508L548 484L576 484C587 484 596 475 596 464C596 453 587 444 576 444L528 444C517 444 508 453 508 464z" fill="currentColor" /></svg></span>
                     <strong>Consultar el Código Deontológico del COPC (PDF)</strong>
                 </a>
             </p>
@@ -209,7 +177,7 @@
                     alt="Logo del Col·legi Oficial de Psicologia de Catalunya"
                     width="500"
                     height="224"
-                    style="max-width: 200px; height: auto; margin-top: 1rem; border-radius: 8px;">
+                    style="max-width: 200px; height: auto; margin-top: 1rem; border-radius: 8px;" decoding="async">
             </div>
             <div class="footer-col">
                 <h3 class="footer-heading">Servicios</h3>
@@ -222,9 +190,9 @@
             <div class="footer-col">
                 <h3 class="footer-heading">Contacto</h3>
                 <ul>
-                    <li><span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="icon" style="margin-right: 0.5rem;" aria-hidden="true" focusable="false"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z" fill="currentColor" /></svg></span>Carrer del Doctor Hermenegild Arruga, 76, 2n, 2a, Roses</li>
-                    <li><a href="tel:+34621372442"><span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" style="margin-right: 0.5rem;" role="img" aria-label="Teléfono" focusable="false"><path d="M224.2 89C216.3 70.1 195.7 60.1 176.1 65.4L170.6 66.9C106 84.5 50.8 147.1 66.9 223.3C104 398.3 241.7 536 416.7 573.1C493 589.3 555.5 534 573.1 469.4L574.6 463.9C580 444.2 569.9 423.6 551.1 415.8L453.8 375.3C437.3 368.4 418.2 373.2 406.8 387.1L368.2 434.3C297.9 399.4 241.3 341 208.8 269.3L253 233.3C266.9 222 271.6 202.9 264.8 186.3L224.2 89z" fill="currentColor" /></svg></span>621 372 442</a></li>
-                    <li><a href="mailto:javicaceres@cop.es"><span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" style="margin-right: 0.5rem;" role="img" aria-label="Correo" focusable="false"><path d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L377.6 408.8C343.5 434.4 296.5 434.4 262.4 408.8L64 260z" fill="currentColor" /></svg></span>javicaceres@cop.es</a></li>
+                    <li><span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="icon" style="margin-right: 0.5rem;" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z" fill="currentColor" /></svg></span>Carrer del Doctor Hermenegild Arruga, 76, 2n, 2a, Roses</li>
+                    <li><a href="tel:+34621372442"><span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" style="margin-right: 0.5rem;" role="img" aria-label="Teléfono" focusable="false" width="20" height="20" fill="currentColor"><path d="M224.2 89C216.3 70.1 195.7 60.1 176.1 65.4L170.6 66.9C106 84.5 50.8 147.1 66.9 223.3C104 398.3 241.7 536 416.7 573.1C493 589.3 555.5 534 573.1 469.4L574.6 463.9C580 444.2 569.9 423.6 551.1 415.8L453.8 375.3C437.3 368.4 418.2 373.2 406.8 387.1L368.2 434.3C297.9 399.4 241.3 341 208.8 269.3L253 233.3C266.9 222 271.6 202.9 264.8 186.3L224.2 89z" fill="currentColor" /></svg></span>621 372 442</a></li>
+                    <li><a href="mailto:javicaceres@cop.es"><span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" style="margin-right: 0.5rem;" role="img" aria-label="Correo" focusable="false" width="20" height="20" fill="currentColor"><path d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L377.6 408.8C343.5 434.4 296.5 434.4 262.4 408.8L64 260z" fill="currentColor" /></svg></span>javicaceres@cop.es</a></li>
                 </ul>
             </div>
             <div class="footer-col">
