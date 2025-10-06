@@ -198,6 +198,68 @@ section#especializacion .grid-2 > a {
     margin-inline: auto;
 }
 
+/* ===== Tamaños y offsets estándar ===== */
+:root{
+  --icon-cta: 24px;              /* icono en botones */
+  --icon-wa-fab: 28px;           /* icono del flotante */
+  --tap-target: 44px;            /* área táctil mínima */
+  --fab-offset-mobile: 16px;     /* separación móvil (estándar) */
+  --fab-offset-desktop: 24px;    /* separación desktop (estándar) */
+}
+
+/* Iconos dentro de botones CTA (incluye WhatsApp cuando va en un botón) */
+.btn .icon, .btn-primary .icon, .btn-secondary .icon{
+  width: var(--icon-cta);
+  height: var(--icon-cta);
+  display: inline-block;
+  vertical-align: middle;
+  margin-inline-end: .5rem;
+  flex: 0 0 auto;
+}
+
+/* Botón flotante de WhatsApp (ajusta a tus clases/ID reales) */
+#whatsapp-fab, .whatsapp-fab, .whatsapp-button{
+  position: fixed;
+  right: var(--fab-offset-mobile);
+  bottom: var(--fab-offset-mobile);
+  width: var(--tap-target);
+  height: var(--tap-target);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+}
+#whatsapp-fab .icon, .whatsapp-fab .icon, .whatsapp-button .icon{
+  width: var(--icon-wa-fab);
+  height: var(--icon-wa-fab);
+  display: block;
+}
+
+/* Desktop: más separación al borde */
+@media (min-width: 1024px){
+  #whatsapp-fab, .whatsapp-fab, .whatsapp-button{
+    right: var(--fab-offset-desktop);
+    bottom: var(--fab-offset-desktop);
+  }
+}
+
+/* Respetar notch y safe areas en iOS */
+@supports (padding: env(safe-area-inset-bottom)){
+  #whatsapp-fab, .whatsapp-fab, .whatsapp-button{
+    margin-right: env(safe-area-inset-right);
+    margin-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Hamburguesa móvil: icono 24px y tap target 44px */
+.hamburger-menu{ width: var(--tap-target); height: var(--tap-target); display:grid; place-items:center; }
+.hamburger-menu .icon, .hamburger .icon, .hamburger-menu svg, .hamburger svg{
+  width: 24px; height: 24px; display:block;
+}
+
+/* Guardarraíles: NO tocar footer ni estrellas */
+footer .icon,
+.star-rating .icon, .star-rating svg, .star-rating img{ width: inherit; height: inherit; }
+
 /* Online → "Cómo funciona" */
 #como-funciona .card .icon {
     display: block;
