@@ -195,7 +195,7 @@
 }
 
 @media (min-width: 1024px) {
-    .testimonial-text { -webkit-line-clamp: 5; }
+    .testimonial-text { -webkit-line-clamp: 12; }
 
     .testimonial-slide {
         flex: 0 0 33.333%;
@@ -259,7 +259,7 @@
   /* Mantener tarifas (checks) tal cual */
   .tarifa-card .icon { width: inherit; height: inherit; }
 
-  /* 2) Reseñas/testimonios: más altas que anchas (≈ 3/4) */
+  /* Reseñas/testimonios: más altas que anchas (≈ 3/4) */
   .testimonials-section .testimonial-card,
   .reviews .testimonial-card,
   .opiniones .review-card,
@@ -273,10 +273,28 @@
     padding: var(--card-padding,1rem 1.25rem);
   }
 
-  /* Si el carrusel necesita altura fija para no “saltar” al montar slides */
+  /* 1) Texto de reseña: mostrar completo si cabe; si no, clamp a 12 líneas con "…" */
+  .testimonials-section .testimonial-card .testimonial-text,
+  .reviews .testimonial-card .testimonial-text,
+  .opiniones .review-card .testimonial-text,
+  .swiper-slide .testimonial-card .testimonial-text {
+    display: -webkit-box;           /* necesario para line-clamp */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 12;         /* máx. 12 líneas en desktop */
+    overflow: hidden;               /* si supera 12, recorta con "…" */
+  }
+
+  /* 2) Más separación estrellas → texto (desktop) */
+  .testimonials-section .testimonial-card .stars,
+  .reviews .testimonial-card .stars,
+  .opiniones .review-card .stars {
+    margin-bottom: 0.75rem; /* ~12px */
+  }
+
+  /* 3) Estabilidad del carrusel (evitar saltos con textos largos) */
   .testimonials-section .carousel,
   .testimonials-carousel {
-    min-height: 380px; /* ajusta si una tarjeta muy larga lo requiere */
+    min-height: 460px; /* sube si alguna reseña aún lo necesita (480–500px) */
   }
 }
 
