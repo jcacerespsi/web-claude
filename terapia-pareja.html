@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- OPTIMIZACIÓN: Preconnect a dominios externos -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicons -->
@@ -35,91 +31,30 @@
     <!-- Fonts Inter (self-hosted per millorar velocitat) -->
     <link rel="preload" href="/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/inter-v20-latin-600.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/inter-v20-latin-700.woff2" as="font" type="font/woff2" crossorigin> 
-    <style>
-    @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('/fonts/inter-v20-latin-regular.woff2') format('woff2');
-    }
+    <link rel="preload" href="/fonts/inter-v20-latin-700.woff2" as="font" type="font/woff2" crossorigin>
 
-    @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url('/fonts/inter-v20-latin-600.woff2') format('woff2');
-    }
-
-    @font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url('/fonts/inter-v20-latin-700.woff2') format('woff2');
-    }
-    </style>
-
-    <!-- CSS CRÍTICO - Previene CLS -->
-    <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-        background-color: #F9F9F7;
-        color: #4A5568;
-        line-height: 1.7;
-    }
-    .header {
-        background: rgba(249, 249, 247, 0.75);
-        backdrop-filter: blur(12px);
-        position: fixed;
-        width: 100%;
-        z-index: 100;
-        height: 90px;
-    }
-    .hero {
-        padding-top: 8rem;
-    }
-    .logo-container {
-        width: 240px;
-        height: 70px;
-    }
-    @media (max-width: 768px) {
-        .logo-container {
-            width: 180px;
-            height: 50px;
-        }
-        .hero {
-            padding-top: 8rem;
-        }
-    }
-    </style>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/hero.css">
+    <link rel="stylesheet" href="/css/space.css">
+    <link rel="stylesheet" href="/css/testimonios.css">
+    <link rel="stylesheet" href="/css/mapa.css">
+    <link rel="stylesheet" href="/css/terapia-pareja.css">
     
-    <!-- CSS carregat de forma asíncrona per no bloquejar renderitzat -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-
-    <link rel="preload" href="css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D5Z9J5PQCK"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-D5Z9J5PQCK');
-    </script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Psychologist",
-      "name": "Javi Cáceres - Terapia de Pareja en Roses",
+      "@type": [
+        "LocalBusiness",
+        "Psychologist"
+      ],
+      "name": "Javi Cáceres Psicólogo Sanitario",
+      "@id": "https://www.jcacerespsicologo.com/#localbusiness",
+      "url": "https://www.jcacerespsicologo.com/",
       "image": "https://www.jcacerespsicologo.com/images/logo-javi-caceres-horizontal.svg",
-      "url": "https://www.jcacerespsicologo.com/terapia-pareja.html",
       "telephone": "+34621372442",
+      "email": "mailto:javicaceres@cop.es",
       "priceRange": "€€",
       "address": {
         "@type": "PostalAddress",
@@ -129,13 +64,35 @@
         "addressRegion": "Girona",
         "addressCountry": "ES"
       },
-      "geo": { "@type": "GeoCoordinates", "latitude": 42.2642011, "longitude": 3.1789986 }
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.2642011,
+        "longitude": 3.1789986
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "20:00"
+        }
+      ],
+      "sameAs": [
+        "https://maps.app.goo.gl/qK8TCrotW8m6P8oCA",
+        "https://wa.me/34621372442"
+      ]
     }
     </script>
 </head>
 <body>
     
-    <header class="header" id="mainHeader">
+    <header class="header site-header" id="mainHeader">
         <nav class="nav container">
             <a href="index.html" class="logo-container">
                 <img src="images/logo-javi-caceres-horizontal.svg" 
@@ -143,7 +100,7 @@
                     class="logo-img" 
                     width="240" 
                     height="70"
-                    fetchpriority="high">
+                    fetchpriority="high" decoding="async">
             </a>
             <ul class="nav-menu">
                 <li><a href="index.html">Inicio</a></li>
@@ -151,15 +108,17 @@
                 <li><a href="#metodo">El Método</a></li>
                 <li><a href="#quien-soy">Sobre Mí</a></li>
                 <li><a href="#tarifas">Tarifas</a></li>
-                <li><a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." target="_blank" class="btn btn-primary">Pedir Cita</a></li>
+                <li><a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." target="_blank" rel="noopener" class="btn btn-primary">Pedir Cita</a></li>
             </ul>
-            <button class="hamburger-menu" id="hamburger-btn" aria-label="Abrir menú">
-                <i class="fas fa-bars"></i>
+            <button class="hamburger-menu" id="hamburger-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-nav">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon" aria-hidden="true" focusable="false" width="24" height="24" fill="currentColor">
+  <path d="M16 96a16 16 0 0 1 16-16h384a16 16 0 0 1 0 32H32A16 16 0 0 1 16 96Zm0 160a16 16 0 0 1 16-16h384a16 16 0 0 1 0 32H32a16 16 0 0 1-16-16Zm16 144a16 16 0 0 0 0 32h384a16 16 0 0 0 0-32H32Z" fill="currentColor" />
+</svg>
             </button>
         </nav>
     </header>
 
-    <div class="mobile-nav-panel" id="mobile-nav">
+    <div class="mobile-nav-panel" id="main-nav">
         <ul>
             <li><a href="index.html">Inicio</a></li>
             <li><a href="terapia-pareja.html">Terapia de Pareja</a></li>
@@ -179,7 +138,7 @@
                 <h1>¿Sentís que la distancia y las discusiones se han adueñado de vuestra relación?</h1>
                 <p class="subtitle">Recuperar la conexión, la amistad y la pasión es posible. Os ofrezco un método de terapia de pareja basado en la ciencia (Gottman) y en vuestras propias fortalezas para reconstruir el "nosotros" que un día fuisteis.</p>
                 <div class="hero-actions">
-                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Iniciar el Cambio</a>
+                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." target="_blank" rel="noopener" class="btn btn-primary"><img src="icons/whatsapp.svg" class="icon" alt="WhatsApp" decoding="async" width="24" height="24"> Iniciar el Cambio</a>
                 </div>
             </div>
         </section>
@@ -192,13 +151,13 @@
                     <h2 class="section-title">Un Mapa Claro para Vuestra Relación</h2>
                 </div>
                 <div class="grid-2">
-                    <div class="content-card">
-                        <div class="icon"><i class="fas fa-microscope"></i></div>
+                    <div class="content-card card">
+                        <div class="icon-wrapper text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor"><path d="M240 64C213.5 64 192 85.5 192 112L192 320C192 346.5 213.5 368 240 368L304 368C330.5 368 352 346.5 352 320L352 256L384 256C454.7 256 512 313.3 512 384C512 454.7 454.7 512 384 512L96 512C78.3 512 64 526.3 64 544C64 561.7 78.3 576 96 576L544 576C561.7 576 576 561.7 576 544C576 526.3 561.7 512 544 512L527.1 512C557.5 478 576 433.2 576 384C576 278 490 192 384 192L352 192L352 112C352 85.5 330.5 64 304 64L240 64zM184 416C170.7 416 160 426.7 160 440C160 453.3 170.7 464 184 464L360 464C373.3 464 384 453.3 384 440C384 426.7 373.3 416 360 416L184 416z" fill="currentColor" /></svg></div>
                         <h3>El Método Gottman: La Ciencia de las Parejas</h3>
                         <p>No trabajaremos con opiniones, sino con décadas de investigación científica. El Dr. John Gottman identificó los pilares que sostienen a las parejas felices. Aprenderemos a desactivar los "Cuatro Jinetes del Apocalipsis" (crítica, desprecio, actitud defensiva y evasión) y a construir una base sólida de amistad, admiración y propósito compartido.</p>
                     </div>
-                    <div class="content-card">
-                        <div class="icon"><i class="fas fa-hands-helping"></i></div>
+                    <div class="content-card card">
+                        <div class="icon-wrapper text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor"><path d="M488 192H336v56c0 39.7-32.3 72-72 72s-72-32.3-72-72V126.4l-64.9 39C107.8 176.9 96 197.8 96 220.2v47.3l-80 46.2C.7 322.5-4.6 342.1 4.3 357.4l80 138.6c8.8 15.3 28.4 20.5 43.7 11.7L231.4 448H368c35.3 0 64-28.7 64-64h16c17.7 0 32-14.3 32-32v-64h8c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24zm147.7-37.4L555.7 16C546.9.7 527.3-4.5 512 4.3L408.6 64H306.4c-12 0-23.7 3.4-33.9 9.7L239 94.6c-9.4 5.8-15 16.1-15 27.1V248c0 22.1 17.9 40 40 40s40-17.9 40-40v-88h184c30.9 0 56 25.1 56 56v28.5l80-46.2c15.3-8.9 20.5-28.4 11.7-43.7z" fill="currentColor" /></svg></div>
                         <h3>Terapia Sistémica Breve: Vuestras Soluciones</h3>
                         <p>Cada pareja es un mundo. No hay recetas mágicas. Mi papel es ayudaros a descubrir qué es lo que SÍ funciona entre vosotros (aunque ahora parezca poco) y a amplificarlo. Identificaremos los patrones que os bloquean y, juntos, diseñaremos pequeños cambios que generen grandes diferencias.</p>
                     </div>
@@ -232,7 +191,7 @@
         <section class="section" id="quien-soy" style="background-color: var(--bg-lighter);">
             <div class="container about-section">
                 <div style="text-align: center;">
-                    <img src="images/terapia-pareja.webp" alt="Terapia de pareja - Sesión de terapia con Javi Cáceres" class="about-image" loading="lazy" width="800" height="870">
+                    <img src="images/terapia-pareja.webp" alt="Terapia de pareja - Sesión de terapia con Javi Cáceres" class="about-image" loading="lazy" width="800" height="870" decoding="async">
                 </div>
                 <div>
                     <p class="section-subtitle">MI ESPECIALIZACIÓN</p>
@@ -244,59 +203,135 @@
         </section>
 
         <!-- Section 5: Testimonios -->
-        <section class="section testimonials-section" id="testimonios">
+        <section class="section testimonials-section" id="testimonios" role="region" aria-label="Opiniones de clientes">
             <div class="container">
                 <div class="section-header">
                     <p class="section-subtitle">LA OPINIÓN DE MIS CLIENTES</p>
                     <h2 class="section-title">Confianza construida sesión a sesión</h2>
                 </div>
-                <div class="testimonial-slider-container">
+                <div class="testimonial-slider-container carousel">
                     <div class="testimonial-slider">
                         <div class="testimonial-slide">
                             <div class="testimonial-card">
-                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                <blockquote>Gran profesional me ha ayudado a saber gestionarme y guiarme. Muy recomendable un 10.</blockquote>
-                                <cite>C.M.</cite>
+
+                                <div class="testimonial-header">
+
+                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"></div>
+
+                                </div>
+
+                                <blockquote class="testimonial-text">Gran profesional me ha ayudado a saber gestionarme y guiarme. Muy recomendable un 10.</blockquote>
+
+                                <div class="testimonial-footer">
+
+                                    <cite>C.M.</cite>
+
+                                </div>
+
                             </div>
                         </div>
                          <div class="testimonial-slide">
                             <div class="testimonial-card">
-                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                <blockquote>Un profesional excelente. Estoy muy agradecida con Javi por su profesionalidad y empatía. Desde el primer momento me hizo sentir cómoda y comprendida, creando un espacio seguro donde trabajar en mi bienestar.</blockquote>
-                                <cite>Dra. M.L.</cite>
+
+                                <div class="testimonial-header">
+
+                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"></div>
+
+                                </div>
+
+                                <blockquote class="testimonial-text">Un profesional excelente. Estoy muy agradecida con Javi por su profesionalidad y empatía. Desde el primer momento me hizo sentir cómoda y comprendida, creando un espacio seguro donde trabajar en mi bienestar.</blockquote>
+
+                                <div class="testimonial-footer">
+
+                                    <cite>Dra. M.L.</cite>
+
+                                </div>
+
                             </div>
                         </div>
                         <div class="testimonial-slide">
                             <div class="testimonial-card">
-                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                <blockquote>Estoy muy contenta. Totalmente recomendable. Es profesional pero también muy cercano. Me ha ayudado a encontrar y desarrollar métodos adecuados a mi personalidad para tratar mi problema.</blockquote>
-                                <cite>C.G.M.</cite>
+
+                                <div class="testimonial-header">
+
+                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"></div>
+
+                                </div>
+
+                                <blockquote class="testimonial-text">Estoy muy contenta. Totalmente recomendable. Es profesional pero también muy cercano. Me ha ayudado a encontrar y desarrollar métodos adecuados a mi personalidad para tratar mi problema.</blockquote>
+
+                                <div class="testimonial-footer">
+
+                                    <cite>C.G.M.</cite>
+
+                                </div>
+
                             </div>
                         </div>
                         <div class="testimonial-slide">
                             <div class="testimonial-card">
-                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                <blockquote>Javi me ha ayudado a salir de un período bastante complicado. Estoy muy contento con el proceso y el acompañamiento. El trato es cercano, amable y sincero.</blockquote>
-                                <cite>P.</cite>
+
+                                <div class="testimonial-header">
+
+                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"></div>
+
+                                </div>
+
+                                <blockquote class="testimonial-text">Javi me ha ayudado a salir de un período bastante complicado. Estoy muy contento con el proceso y el acompañamiento. El trato es cercano, amable y sincero.</blockquote>
+
+                                <div class="testimonial-footer">
+
+                                    <cite>P.</cite>
+
+                                </div>
+
                             </div>
                         </div>
                         <div class="testimonial-slide">
                             <div class="testimonial-card">
-                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                <blockquote>...me ha sabido escuchar y comprender en todo momento; me ha facilitado herramientas y estrategias para abordar las dificultades diarias que surgen a menudo...</blockquote>
-                                <cite>E.F.M.</cite>
+
+                                <div class="testimonial-header">
+
+                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"></div>
+
+                                </div>
+
+                                <blockquote class="testimonial-text">...me ha sabido escuchar y comprender en todo momento; me ha facilitado herramientas y estrategias para abordar las dificultades diarias que surgen a menudo...</blockquote>
+
+                                <div class="testimonial-footer">
+
+                                    <cite>E.F.M.</cite>
+
+                                </div>
+
                             </div>
                         </div>
                         <div class="testimonial-slide">
                             <div class="testimonial-card">
-                                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                                <blockquote>...escucha activamente, da herramientas y actividades para avanzar... Su servicio es de gran utilidad y personalmente creo que me ha ayudado a mejorar mi calidad de vida.</blockquote>
-                                <cite>M.</cite>
+
+                                <div class="testimonial-header">
+
+                                    <div class="stars rating"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"><img src="icons/star-rating.svg" class="icon" alt="Estrella" decoding="async" width="20" height="20"></div>
+
+                                </div>
+
+                                <blockquote class="testimonial-text">...escucha activamente, da herramientas y actividades para avanzar... Su servicio es de gran utilidad y personalmente creo que me ha ayudado a mejorar mi calidad de vida.</blockquote>
+
+                                <div class="testimonial-footer">
+
+                                    <cite>M.</cite>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                    <button class="slider-btn prev-btn" aria-label="Reseña anterior"><i class="fas fa-chevron-left"></i></button>
-                    <button class="slider-btn next-btn" aria-label="Siguiente reseña"><i class="fas fa-chevron-right"></i></button>
+                    <button type="button" class="slider-btn prev-btn" aria-label="Reseña anterior"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
+  <path d="M224 32a24 24 0 0 1 0 34L82.5 208 224 346a24 24 0 1 1-34 34l-160-160a24 24 0 0 1 0-34l160-160A24 24 0 0 1 224 32Z" fill="currentColor" />
+</svg></button>
+                    <button type="button" class="slider-btn next-btn" aria-label="Siguiente reseña"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
+  <path d="M32 32a24 24 0 0 1 34 0l160 160a24 24 0 0 1 0 34l-160 160a24 24 0 0 1-34-34L173.5 208 32 66a24 24 0 0 1 0-34Z" fill="currentColor" />
+</svg></button>
                 </div>
                 
                 <div class="slider-pagination" id="slider-pagination"></div>
@@ -316,12 +351,12 @@
                     <h2 class="section-title">Tarifa Terapia de Pareja</h2>
                     <p>Mi compromiso es con una terapia honesta y breve. No uso bonos porque no quiero que paguéis por más sesiones de las que realmente necesitáis.</p>
                 </div>
-                <div class="tarifa-card highlight">
+                <div class="tarifa-card pricing-card card highlight">
                     <h3>Sesión de Pareja</h3>
                     <div class="price">70€</div>
                     <p class="duration">Hasta 90 minutos | Presencial u Online</p>
                     <p>Un espacio y tiempo extendido para que ambos tengáis voz, permitiendo profundizar de manera efectiva desde el primer encuentro.</p>
-                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20cita%20para%20terapia%20de%20pareja." target="_blank" class="btn btn-primary">Pedir Cita de Pareja</a>
+                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20cita%20para%20terapia%20de%20pareja." target="_blank" rel="noopener" class="btn btn-primary">Pedir Cita de Pareja</a>
                 </div>
             </div>
         </section>
@@ -337,8 +372,8 @@
                     <p><strong>Coordenadas GPS:</strong> 42.2642011, 3.1789986</p>
                     <div class="hero-actions" style="margin-top: 2rem; justify-content: flex-start; gap: 0.75rem;">
                         <a href="https://maps.app.goo.gl/qK8TCrotW8m6P8oCA" target="_blank" rel="noopener" class="btn btn-primary">Google Maps</a>
-                        <a href="https://maps.apple.com/?q=42.2642011,3.1789986" target="_blank" class="btn btn-secondary">Apple Maps</a>
-                        <a href="https://ul.waze.com/ul?ll=42.2642011,3.1789986&navigate=yes" target="_blank" class="btn btn-secondary">Waze</a>
+                        <a href="https://maps.apple.com/?q=42.2642011,3.1789986" target="_blank" rel="noopener" class="btn btn-secondary">Apple Maps</a>
+                        <a href="https://ul.waze.com/ul?ll=42.2642011,3.1789986&navigate=yes" target="_blank" rel="noopener" class="btn btn-secondary">Waze</a>
                     </div>                </div>
                 <div>
                      <div class="map-lazy-container" 
@@ -359,23 +394,33 @@
                 </div>
                 <div class="faq-list" style="max-width: 800px; margin: 0 auto;">
                     <div class="faq-item">
-                        <div class="faq-question"><span>¿Y si mi pareja no quiere venir a terapia?</span><i class="fas fa-chevron-down"></i></div>
+                        <div class="faq-question"><span>¿Y si mi pareja no quiere venir a terapia?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
+  <path d="M32 32a24 24 0 0 1 34 0L256 181.5 446 32a24 24 0 1 1 34 34l-192 192a24 24 0 0 1-34 0L32 66a24 24 0 0 1 0-34Z" fill="currentColor" />
+</svg></div>
                         <div class="faq-answer"><p>Es muy habitual. A veces, empezar una persona sola puede generar cambios que animen al otro a unirse. También podemos tener una primera sesión informativa para que la parte más escéptica conozca el método y resuelva sus dudas sin compromiso. No es un juicio, es un taller de mejora.</p></div>
                     </div>
                     <div class="faq-item">
-                        <div class="faq-question"><span>¿La terapia consiste en buscar culpables?</span><i class="fas fa-chevron-down"></i></div>
+                        <div class="faq-question"><span>¿La terapia consiste en buscar culpables?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
+  <path d="M32 32a24 24 0 0 1 34 0L256 181.5 446 32a24 24 0 1 1 34 34l-192 192a24 24 0 0 1-34 0L32 66a24 24 0 0 1 0-34Z" fill="currentColor" />
+</svg></div>
                         <div class="faq-answer"><p>Todo lo contrario. El enfoque Gottman no busca culpables, sino que analiza los patrones de interacción que no funcionan. El "enemigo" no es tu pareja, es el patrón de comunicación negativo. Trabajaremos como un equipo contra ese patrón.</p></div>
                     </div>
                      <div class="faq-item">
-                        <div class="faq-question"><span>¿Y si nuestros problemas son por una infidelidad?</span><i class="fas fa-chevron-down"></i></div>
+                        <div class="faq-question"><span>¿Y si nuestros problemas son por una infidelidad?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
+  <path d="M32 32a24 24 0 0 1 34 0L256 181.5 446 32a24 24 0 1 1 34 34l-192 192a24 24 0 0 1-34 0L32 66a24 24 0 0 1 0-34Z" fill="currentColor" />
+</svg></div>
                         <div class="faq-answer"><p>Una infidelidad es una de las crisis más dolorosas, pero no siempre significa el final. El método proporciona un proceso estructurado para abordar la traición, procesar el dolor y, si ambos lo decidís, trabajar en la reconstrucción de la confianza.</p></div>
                     </div>
                      <div class="faq-item">
-                        <div class="faq-question"><span>¿Hablaremos solo de problemas?</span><i class="fas fa-chevron-down"></i></div>
+                        <div class="faq-question"><span>¿Hablaremos solo de problemas?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
+  <path d="M32 32a24 24 0 0 1 34 0L256 181.5 446 32a24 24 0 1 1 34 34l-192 192a24 24 0 0 1-34 0L32 66a24 24 0 0 1 0-34Z" fill="currentColor" />
+</svg></div>
                         <div class="faq-answer"><p>No. De hecho, una parte importante del método Gottman se centra en redescubrir y fortalecer vuestra amistad, admiración y los aspectos positivos de la relación. Hablaremos de lo que os duele, pero también de lo que os une y os hizo felices.</p></div>
                     </div>
                      <div class="faq-item">
-                        <div class="faq-question"><span>¿Nos "obligarás" a seguir juntos?</span><i class="fas fa-chevron-down"></i></div>
+                        <div class="faq-question"><span>¿Nos "obligarás" a seguir juntos?</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 256" class="icon" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor">
+  <path d="M32 32a24 24 0 0 1 34 0L256 181.5 446 32a24 24 0 1 1 34 34l-192 192a24 24 0 0 1-34 0L32 66a24 24 0 0 1 0-34Z" fill="currentColor" />
+</svg></div>
                         <div class="faq-answer"><p>Mi rol no es decidir el futuro de vuestra relación. Mi objetivo es daros las herramientas para que os comuniquéis mejor y podáis tomar la decisión que sea mejor para vosotros, ya sea juntos o por separado, pero desde un lugar de mayor comprensión y menos dolor.</p></div>
                     </div>
                 </div>
@@ -388,7 +433,7 @@
                 <h2>Construid el futuro que deseáis, juntos.</h2>
                 <p>Dar el paso de pedir ayuda como pareja es un acto de valentía y un gran gesto de amor hacia la relación. Si estáis listos para empezar a cambiar las cosas, estoy aquí para guiaros.</p>
                 <div class="hero-actions" style="margin-top: 2rem;">
-                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." target="_blank" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Contactar para Terapia de Pareja</a>
+                    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." target="_blank" rel="noopener" class="btn btn-primary"><img src="icons/whatsapp.svg" class="icon" alt="WhatsApp" decoding="async" width="24" height="24"> Contactar para Terapia de Pareja</a>
                 </div>
             </div>
         </section>
@@ -397,17 +442,17 @@
     <footer class="footer">
         <div class="container footer-grid">
             <div class="footer-col">
-                <h4>Javi Cáceres Psicólogo</h4>
+                <h3 class="footer-heading">Javi Cáceres Psicólogo</h3>
                 <p>Psicólogo Sanitario en Roses (Girona) y Online. Col. 16.772.</p>
                 <img src="images/colegio-psicologos.webp" 
                     alt="Logo del Col·legi Oficial de Psicologia de Catalunya"
                     width="500"
                     height="224"
                     loading="lazy"
-                    style="max-width: 200px; height: auto; margin-top: 1rem; border-radius: 8px;">
+                    style="max-width: 200px; height: auto; margin-top: 1rem; border-radius: 8px;" decoding="async">
             </div>
             <div class="footer-col">
-                <h4>Servicios</h4>
+                <h3 class="footer-heading">Servicios</h3>
                 <ul>
                     <li><a href="index.html">Terapia Presencial (Roses)</a></li>
                     <li><a href="terapia-online.html">Terapia Breve Online</a></li>
@@ -415,20 +460,20 @@
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Contacto</h4>
+                <h3 class="footer-heading">Contacto</h3>
                 <ul>
                     <li>
-                        <i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i>
+                        <span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="icon" style="margin-right: 0.5rem;" aria-hidden="true" focusable="false" width="20" height="20" fill="currentColor"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z" fill="currentColor" /></svg></span>
                         <a href="https://maps.app.goo.gl/qK8TCrotW8m6P8oCA" target="_blank" rel="noopener">
                             Carrer del Doctor Hermenegild Arruga, 76, 2n, 2a, Roses
                         </a>
                     </li>
-                    <li><a href="tel:+34621372442"><i class="fas fa-phone" style="margin-right: 0.5rem;"></i>621 372 442</a></li>
-                    <li><a href="mailto:javicaceres@cop.es"><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>javicaceres@cop.es</a></li>
+                    <li><a href="tel:+34621372442"><span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" style="margin-right: 0.5rem;" role="img" aria-label="Teléfono" focusable="false" width="20" height="20" fill="currentColor"><path d="M224.2 89C216.3 70.1 195.7 60.1 176.1 65.4L170.6 66.9C106 84.5 50.8 147.1 66.9 223.3C104 398.3 241.7 536 416.7 573.1C493 589.3 555.5 534 573.1 469.4L574.6 463.9C580 444.2 569.9 423.6 551.1 415.8L453.8 375.3C437.3 368.4 418.2 373.2 406.8 387.1L368.2 434.3C297.9 399.4 241.3 341 208.8 269.3L253 233.3C266.9 222 271.6 202.9 264.8 186.3L224.2 89z" fill="currentColor" /></svg></span>621 372 442</a></li>
+                    <li><a href="mailto:javicaceres@cop.es"><span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon" style="margin-right: 0.5rem;" role="img" aria-label="Correo" focusable="false" width="20" height="20" fill="currentColor"><path d="M112 128C85.5 128 64 149.5 64 176C64 191.1 71.1 205.3 83.2 214.4L291.2 370.4C308.3 383.2 331.7 383.2 348.8 370.4L556.8 214.4C568.9 205.3 576 191.1 576 176C576 149.5 554.5 128 528 128L112 128zM64 260L64 448C64 483.3 92.7 512 128 512L512 512C547.3 512 576 483.3 576 448L576 260L377.6 408.8C343.5 434.4 296.5 434.4 262.4 408.8L64 260z" fill="currentColor" /></svg></span>javicaceres@cop.es</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Legal</h4>
+                <h3 class="footer-heading">Legal</h3>
                 <ul>
                     <li><a href="politica-privacidad.html">Privacidad</a></li>
                     <li><a href="aviso-legal.html">Aviso Legal</a></li>
@@ -440,13 +485,18 @@
         <div class="footer-bottom"><p>&copy; 2025 Javi Cáceres Psicólogo. Todos los derechos reservados.</p></div>
     </footer>
 
-    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/34621372442?text=Hola%20Javi,%20nos%20gustaría%20pedir%20información%20sobre%20la%20terapia%20de%20pareja." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"><img src="icons/whatsapp.svg" class="icon" alt="WhatsApp" decoding="async" width="50" height="50"></a>
 
-    <div class="cookie-consent-banner" id="cookie-banner">
-        <p>Este sitio web utiliza cookies para mejorar la experiencia del usuario. <a href="politica-cookies.html">Más información</a>.</p>
-        <button class="btn btn-primary" id="accept-cookies-btn">Aceptar</button>
+    <div class="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="cookie-title" aria-describedby="cookie-desc">
+        <span id="cookie-title" class="visually-hidden">Preferencias de cookies</span>
+        <p id="cookie-desc">Este sitio web utiliza cookies para mejorar la experiencia del usuario. <a class="cookie-link" href="/politica-cookies.html" rel="noopener">Más información sobre la política de cookies</a></p>
+        <div class="cookie-actions">
+            <button class="btn btn-secondary js-cookie-reject">Rechazar</button>
+            <button class="btn btn-primary js-cookie-accept">Aceptar</button>
+        </div>
     </div>
 
-    <script src="js/main.js"></script>
+    <script src="/js/main.js" defer></script>
+    <script src="/js/cookies.js" defer></script>
 </body>
 </html>

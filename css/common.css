@@ -1,0 +1,663 @@
+/* Shared layout and component styles */
+
+.grid-2,
+.grid-3 {
+    display: grid;
+    gap: 2.5rem;
+}
+
+.grid-2 { grid-template-columns: 1fr; }
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+section#especializacion .grid-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+section#especializacion .grid-2 > a {
+    flex: 1;
+    max-width: 420px;
+}
+
+.info-card,
+.content-card,
+.specialization-card,
+.tarifa-card {
+    background-color: var(--white);
+    padding: 2.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border: var(--border-width) solid var(--bg-subtle);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.info-card:hover,
+.content-card:hover,
+.specialization-card:hover,
+.tarifa-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-wisdom);
+}
+
+.info-card {
+    border-top: var(--border-accent) solid var(--accent-wisdom);
+    text-align: center;
+}
+
+.content-card {
+    border-left: 3px solid var(--accent-empathy);
+}
+
+.specialization-card {
+    text-align: center;
+    border-bottom: var(--border-accent) solid var(--accent-empathy);
+}
+
+.specialization-card h3 {
+    color: var(--accent-empathy);
+    margin-bottom: 0.5rem;
+}
+
+.specialization-card p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.specialization-card .link-more {
+    color: var(--text-medium);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.specialization-card .link-more:hover {
+    color: var(--accent-empathy);
+}
+
+.tarifa-card {
+    text-align: center;
+    border: var(--border-accent) solid var(--accent-wisdom);
+}
+
+.tarifa-card.highlight {
+    border-color: var(--accent-empathy);
+    border-width: 2px;
+    box-shadow: var(--shadow-md);
+}
+
+.tarifa-card h3 { margin-bottom: 0.5rem; }
+
+.tarifa-card .price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-strongest);
+    margin-bottom: 0.5rem;
+}
+
+.tarifa-card .duration {
+    color: var(--text-medium);
+    margin-bottom: 1.5rem;
+}
+
+.tarifa-card ul {
+    list-style: none;
+    margin: 1rem 0;
+    flex-grow: 1;
+    padding-left: 0;
+    text-align: left;
+    display: inline-block;
+}
+
+.tarifa-card li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.tarifa-card li .icon {
+    color: var(--earth);
+    margin-right: 0.5rem;
+}
+
+.tarifa-card .btn {
+    width: 100%;
+    margin-top: auto;
+}
+
+.info-card .icon-wrapper,
+.content-card .icon-wrapper {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+#como-trabajo .icon-wrapper {
+    font-size: initial;
+}
+
+#como-trabajo .icon-slot {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    display: inline-block;
+}
+
+#como-trabajo img.icon,
+#como-trabajo svg.icon {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    font-size: initial;
+}
+
+/* === Iconos en cards de contenido === */
+/* Base: 30px para cards genéricas (excluye tarifas) */
+
+.section .card:not(.tarifa-card) .icon,
+.specialization-card .icon,
+.value-card .icon,
+.benefit-card .icon,
+.icon-wrapper > .icon {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+/* Forzar también los tres iconos de "Un enfoque diferente" (home) */
+#como-trabajo .card .icon {
+    width: 30px;
+    height: 30px;
+}
+
+#como-trabajo .icon-slot {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+}
+
+/* Mantener tarifas como están (checks) */
+.tarifa-card .icon,
+.tarifa-card .icon img,
+.tarifa-card .icon svg {
+    width: inherit;
+    height: inherit;
+}
+
+/* === Centrado de iconos en secciones específicas === */
+/* Parejas → "Un enfoque científico y colaborativo" */
+#metodo .card .icon {
+    display: block;
+    margin-inline: auto;
+}
+
+/* ===== Tamaños y offsets estándar ===== */
+:root{
+  --icon-cta: 24px;              /* icono en botones */
+  --icon-wa-fab: 28px;           /* icono del flotante */
+  --tap-target: 44px;            /* área táctil mínima */
+  --fab-offset-mobile: 16px;     /* separación móvil (estándar) */
+  --fab-offset-desktop: 24px;    /* separación desktop (estándar) */
+}
+
+/* Iconos dentro de botones CTA (incluye WhatsApp cuando va en un botón) */
+.btn .icon, .btn-primary .icon, .btn-secondary .icon{
+  width: var(--icon-cta);
+  height: var(--icon-cta);
+  display: inline-block;
+  vertical-align: middle;
+  margin-inline-end: .5rem;
+  flex: 0 0 auto;
+}
+
+/* Botón flotante de WhatsApp (ajusta a tus clases/ID reales) */
+#whatsapp-fab, .whatsapp-fab, .whatsapp-button{
+  position: fixed;
+  right: var(--fab-offset-mobile);
+  bottom: var(--fab-offset-mobile);
+  width: var(--tap-target);
+  height: var(--tap-target);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+}
+#whatsapp-fab .icon, .whatsapp-fab .icon, .whatsapp-button .icon{
+  width: var(--icon-wa-fab);
+  height: var(--icon-wa-fab);
+  display: block;
+}
+
+/* Desktop: más separación al borde */
+@media (min-width: 1024px){
+  #whatsapp-fab, .whatsapp-fab, .whatsapp-button{
+    right: var(--fab-offset-desktop);
+    bottom: var(--fab-offset-desktop);
+  }
+}
+
+/* Respetar notch y safe areas en iOS */
+@supports (padding: env(safe-area-inset-bottom)){
+  #whatsapp-fab, .whatsapp-fab, .whatsapp-button{
+    margin-right: env(safe-area-inset-right);
+    margin-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Guardarraíles: NO tocar footer ni estrellas */
+footer .icon,
+.star-rating .icon, .star-rating svg, .star-rating img{ width: inherit; height: inherit; }
+
+/* Online → "Cómo funciona" */
+#como-funciona .card .icon {
+    display: block;
+    margin-inline: auto;
+}
+
+/* Guardarraíles: no tocar footer ni estrellas */
+footer .icon,
+.star-rating .icon,
+.star-rating svg,
+.star-rating img { width: inherit; height: inherit; }
+
+.specialization-card .icon-wrapper {
+    color: var(--earth);
+}
+
+.btn-primary .icon {
+    margin-right: 0.5rem;
+}
+
+.info-card h3,
+.content-card h3,
+.specialization-card h3 {
+    margin-bottom: 1rem;
+}
+
+.about-section {
+    display: grid;
+    gap: 4rem;
+    align-items: center;
+    grid-template-columns: 1fr;
+}
+
+.about-image {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    border: var(--border-width) solid var(--bg-subtle);
+    aspect-ratio: 500 / 656;
+    max-width: 500px;
+    height: auto;
+    object-fit: cover;
+}
+
+.tarifas-section .container { max-width: 1200px; }
+
+.tarifas-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    text-align: center;
+    justify-content: center;
+}
+
+.faq-item {
+    background: var(--white);
+    border: var(--border-width) solid var(--bg-subtle);
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--accent-wisdom);
+}
+
+.faq-item.active {
+    border-color: var(--accent-empathy);
+}
+
+@media (min-width: 1024px) {
+    #como-trabajo .section-header {
+        min-height: 120px;
+    }
+
+    #como-trabajo .info-card {
+        min-height: 320px;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.faq-question {
+    padding: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-strongest);
+}
+
+.faq-question .icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: var(--primary);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.faq-answer p {
+    padding: 0 1.5rem 1.5rem;
+    margin-bottom: 0;
+    color: var(--text-medium);
+}
+
+.faq-item.active .faq-question .icon {
+    transform: rotate(180deg);
+    color: var(--earth);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+}
+
+.final-cta {
+    background-color: var(--text-strongest);
+    color: var(--bg-main);
+    text-align: center;
+}
+
+.final-cta h2 { color: var(--white); }
+
+.final-cta p {
+    color: var(--bg-subtle);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.whatsapp-float {
+    position: fixed;
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 99999;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: var(--shadow-lg);
+}
+
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);
+    border: 0;
+    white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+    .grid-2 { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 992px) {
+    .about-section { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+    .section { padding: 3.5rem 0; }
+
+    .info-card,
+    .content-card,
+    .tarifa-card { padding: 2rem; }
+
+    section#especializacion .grid-2 {
+        flex-direction: column;
+    }
+
+    section#especializacion .grid-2 > a {
+        max-width: 100%;
+    }
+}
+
+/* Iconos en cards de contenido (no footer, no estrellas) */
+main .section .card .icon,
+main .specialization-card .icon,
+main .tarifa-card .icon{
+  width:28px; height:28px; vertical-align:middle;
+}
+/* Salvaguardas explícitas */
+footer .icon,
+.star-rating .icon, .star-rating svg, .star-rating img{ width:inherit; height:inherit; }
+
+/* === Iconos en cards de contenido → 32px === */
+.section .card:not(.tarifa-card) .icon,
+.specialization-card .icon,
+.value-card .icon,
+.benefit-card .icon,
+.icon-wrapper > .icon {
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+}
+
+/* Forzar también los tres iconos de "Un enfoque diferente" (home) */
+#enfoque-diferente .card .icon,
+#como-trabajo .card .icon {
+  width: 32px;
+  height: 32px;
+}
+
+/* Mantener tarifas (checks) sin cambios */
+.tarifa-card .icon,
+.tarifa-card .icon img,
+.tarifa-card .icon svg {
+  width: inherit;
+  height: inherit;
+}
+
+/* === Centrado de iconos === */
+/* Parejas → "Un enfoque científico y colaborativo" */
+#enfoque-cientifico .card .icon,
+.pareja-page .section.enfoque .card .icon {
+  display: block;
+  margin-inline: auto;
+}
+
+/* Online → "Cómo funciona" */
+#como-funciona .card .icon,
+.online-page .section.como-funciona .card .icon {
+  display: block;
+  margin-inline: auto;
+}
+
+:root{
+  --tap-target: 44px;
+  --fab-offset-mobile: 16px;   /* separación estándar móvil */
+  --fab-offset-desktop: 24px;  /* separación estándar desktop */
+  --wa-fab-mobile: 44px;       /* tamaño icono móvil */
+  --wa-fab-desktop: 50px;      /* tamaño icono desktop */
+}
+
+/* Contenedor FAB WhatsApp (ajusta a tus clases/ID reales) */
+#whatsapp-fab, .whatsapp-fab, .whatsapp-button, .whatsapp-float{
+  right: var(--fab-offset-mobile);
+  bottom: var(--fab-offset-mobile);
+  width: calc(var(--wa-fab-mobile) + 16px);   /* aire: 8px por lado */
+  height: calc(var(--wa-fab-mobile) + 16px);
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+}
+#whatsapp-fab .icon, .whatsapp-fab .icon, .whatsapp-button .icon, .whatsapp-float .icon{
+  width: var(--wa-fab-mobile);
+  height: var(--wa-fab-mobile);
+  display: block;
+}
+
+/* Desktop: mayor icono y mayor separación a bordes */
+@media (min-width:1024px){
+  #whatsapp-fab, .whatsapp-fab, .whatsapp-button, .whatsapp-float{
+    right: var(--fab-offset-desktop);
+    bottom: var(--fab-offset-desktop);
+    width: calc(var(--wa-fab-desktop) + 16px);
+    height: calc(var(--wa-fab-desktop) + 16px);
+  }
+  #whatsapp-fab .icon, .whatsapp-fab .icon, .whatsapp-button .icon, .whatsapp-float .icon{
+    width: var(--wa-fab-desktop);
+    height: var(--wa-fab-desktop);
+  }
+}
+
+/* Safe areas iOS */
+@supports (padding: env(safe-area-inset-bottom)){
+  #whatsapp-fab, .whatsapp-fab, .whatsapp-button, .whatsapp-float{
+    margin-right: env(safe-area-inset-right);
+    margin-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Guardarraíles */
+footer .icon,
+.star-rating .icon, .star-rating svg, .star-rating img{ width: inherit; height: inherit; }
+
+:root{ --tap-target: 44px; }
+
+/* Contenedor del botón: tamaño táctil y centrado del icono */
+.hamburger-menu{
+  width: var(--tap-target);
+  height: var(--tap-target);
+  display: grid;
+  place-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.hamburger-menu .icon,
+.hamburger .icon,
+.hamburger-menu svg,
+.hamburger svg{
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Sin cambios de altura del header al abrir/cerrar */
+@media (min-width:1024px){
+  header.site-header{ min-height:72px; }
+}
+
+/* Accesibilidad: foco visible para teclado */
+.hamburger-menu:focus-visible{
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* Header responsive menu adjustments */
+.hamburger-menu {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+}
+
+.nav-menu {
+    display: none;
+}
+
+@media (min-width: 992px) {
+    .hamburger-menu {
+        display: grid;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hamburger-menu {
+        display: none;
+    }
+
+    .nav-menu {
+        display: flex;
+        gap: 1.8rem;
+        align-items: center;
+    }
+    header.site-header {
+        min-height: 72px;
+    }
+}
+
+@media (max-width: 1023.98px) {
+    .nav-menu.is-open {
+        display: block;
+    }
+}
+
+/* ===== SOLO ESCRITORIO ===== */
+@media (min-width:1024px){
+  /* 1) Iconos de las cards de contenido a 48px (excluye tarifas) */
+  .section .card:not(.tarifa-card) .icon,
+  .specialization-card .icon,
+  .value-card .icon,
+  .benefit-card .icon,
+  #enfoque-diferente .card .icon,
+  #como-trabajo .card .icon {
+    width: 48px;
+    height: 48px;
+    vertical-align: middle;
+    display: block;
+    margin-inline: auto; /* centrados en desktop */
+  }
+
+  /* Mantener tarifas (checks) tal cual */
+  .tarifa-card .icon { width: inherit; height: inherit; }
+
+  /* 2) Reseñas/testimonios: más altas que anchas (≈ 3/4) */
+  .testimonials-section .testimonial-card,
+  .reviews .testimonial-card,
+  .opiniones .review-card,
+  .swiper-slide .testimonial-card {
+    aspect-ratio: 3 / 4;          /* más alto que ancho */
+    min-height: 360px;             /* reserva de espacio para evitar CLS */
+    background: #FFFFFF;           /* mantenemos fondo blanco */
+    border-left: 4px solid #6B7A99;/* ribete coherente */
+    border-radius: var(--card-radius,16px);
+    box-shadow: var(--card-shadow,0 2px 10px rgba(0,0,0,.06));
+    padding: var(--card-padding,1rem 1.25rem);
+  }
+
+  /* Si el carrusel necesita altura fija para no “saltar” al montar slides */
+  .testimonials-section .carousel,
+  .testimonials-carousel {
+    min-height: 380px; /* ajusta si una tarjeta muy larga lo requiere */
+  }
+}
+
+/* Guardarraíles: no tocar footer ni estrellas */
+footer .icon,
+.star-rating .icon, .star-rating svg, .star-rating img { width: inherit; height: inherit; }
+

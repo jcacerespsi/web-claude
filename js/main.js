@@ -1,3 +1,49 @@
+// Inicializa dataLayer y gtag desde el arranque para conservar eventos previos
+window.dataLayer = window.dataLayer || [];
+window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
+
+const GA_MEASUREMENT_ID = 'G-D5Z9J5PQCK';
+window.__GA_MEASUREMENT_ID = GA_MEASUREMENT_ID;
+
+function legacyInjectAnalytics(containerId) {
+    if (window.__gtmLoaded) {
+        return;
+    }
+
+    window.__gtmLoaded = true;
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${containerId}`;
+    document.head.appendChild(script);
+}
+
+window.loadGTM = function loadGTM() {
+    const containerId = window.__GTM_ID || GA_MEASUREMENT_ID;
+
+    if (typeof window.injectGtm === 'function') {
+        window.injectGtm(containerId);
+    } else {
+        legacyInjectAnalytics(containerId);
+    }
+
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID);
+};
+
+function setUniformTestimonialHeights(){
+    const container = document.querySelector('.testimonials-section');
+    if (!container) return;
+    container.style.removeProperty('--t-card-h');
+    const cards = container.querySelectorAll('.testimonial-card');
+    let max = 0;
+    cards.forEach(card => {
+        max = Math.max(max, card.offsetHeight);
+    });
+    if (max) {
+        container.style.setProperty('--t-card-h', `${max}px`);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Header scroll effect - PASSIVE LISTENER
     const header = document.getElementById('mainHeader');
@@ -11,13 +57,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mobile menu toggle
     const hamburgerBtn = document.getElementById('hamburger-btn');
-    const mobileNav = document.getElementById('mobile-nav');
-    hamburgerBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('active');
-    });
-    mobileNav.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => mobileNav.classList.remove('active'));
-    });
+    const mobileNav = document.getElementById('main-nav');
+
+    if (hamburgerBtn && mobileNav) {
+        const setMenuA11yState = (isOpen) => {
+            hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            hamburgerBtn.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+        };
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            setMenuA11yState(mobileNav.classList.contains('active'));
+        });
+
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                setMenuA11yState(false);
+            });
+        });
+
+        setMenuA11yState(mobileNav.classList.contains('active'));
+    }
     
     // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(button => {
@@ -30,104 +91,254 @@ document.addEventListener('DOMContentLoaded', function() {
     // TESTIMONIAL CAROUSEL - OPTIMIZADO
     const slider = document.querySelector('.testimonial-slider');
     if (slider) {
-        const slides = Array.from(slider.children);
+        const totalItems = slider.children.length;
+
         const nextButton = document.querySelector('.next-btn');
         const prevButton = document.querySelector('.prev-btn');
         const paginationContainer = document.getElementById('slider-pagination');
+        const desktopQuery = window.matchMedia('(min-width: 1024px)');
+        const tabletQuery = window.matchMedia('(min-width: 768px)');
+        const cleanupCallbacks = [];
         let currentIndex = 0;
         let intervalId;
-        let slidesPerView = 1;
+        let itemsPerView = 1;
+        let totalPages = Math.max(1, Math.ceil(totalItems / itemsPerView));
+        let layoutUpdateTimeoutId = null;
+        let sliderObserver;
+        let isSliderVisible = !('IntersectionObserver' in window);
 
-        const createPaginationDots = () => {
-            paginationContainer.innerHTML = '';
-            const totalDots = 4;
-            
-            for (let i = 0; i < totalDots; i++) {
-                const dot = document.createElement('button');
-                dot.classList.add('pagination-dot');
-                dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
-                if (i === 0) dot.classList.add('active');
-                
-                dot.addEventListener('click', () => {
-                    currentIndex = i;
-                    showSlide(currentIndex);
-                    updatePagination();
-                    stopAutoSlide();
-                    startAutoSlide();
-                });
-                
-                paginationContainer.appendChild(dot);
+        const debounce = (fn, delay = 150) => {
+            return (...args) => {
+                if (layoutUpdateTimeoutId) {
+                    clearTimeout(layoutUpdateTimeoutId);
+                }
+                layoutUpdateTimeoutId = setTimeout(() => {
+                    layoutUpdateTimeoutId = null;
+                    fn(...args);
+                }, delay);
+            };
+        };
+
+        const throttle = (fn, limit = 200) => {
+            let waiting = false;
+            let pendingArgs = null;
+
+            return (...args) => {
+                if (waiting) {
+                    pendingArgs = args;
+                    return;
+                }
+
+                fn(...args);
+                waiting = true;
+
+                setTimeout(() => {
+                    waiting = false;
+                    if (pendingArgs) {
+                        fn(...pendingArgs);
+                        pendingArgs = null;
+                    }
+                }, limit);
+            };
+        };
+
+        const calculateItemsPerView = () => {
+            if (desktopQuery.matches) {
+                return 3;
             }
+            if (tabletQuery.matches) {
+                return 2;
+            }
+            return 1;
         };
 
         const updatePagination = () => {
+            if (!paginationContainer) return;
             const dots = paginationContainer.querySelectorAll('.pagination-dot');
-            const currentPage = Math.floor(currentIndex);
-            
+            if (!dots.length) return;
+
+            const safeIndex = Math.min(Math.max(currentIndex, 0), dots.length - 1);
             dots.forEach((dot, index) => {
-                dot.classList[index === currentPage ? 'add' : 'remove']('active');
+                const isActive = index === safeIndex;
+                dot.classList[isActive ? 'add' : 'remove']('active');
+                if (isActive) {
+                    dot.setAttribute('aria-current', 'page');
+                } else {
+                    dot.removeAttribute('aria-current');
+                }
             });
         };
 
-        const updateSlidesPerView = () => {
-            if (window.innerWidth >= 992) {
-                slidesPerView = 3;
-            } else if (window.innerWidth >= 768) {
-                slidesPerView = 2;
-            } else {
-                slidesPerView = 1;
-            }
-            createPaginationDots();
-        };
+        const getMaxIndex = () => Math.max(0, totalPages - 1);
 
         const showSlide = (index) => {
-            const slideWidth = 100 / slidesPerView;
-            // Usar transform con will-change para mejor performance
-            slider.style.transform = `translateX(${-index * slideWidth}%)`;
+            const maxIndex = getMaxIndex();
+            currentIndex = Math.min(Math.max(index, 0), maxIndex);
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updatePagination();
+            setUniformTestimonialHeights();
+        };
+
+        const ensurePaginationDots = () => {
+            if (!paginationContainer) {
+                return;
+            }
+
+            const shouldRebuild = paginationContainer.childElementCount !== totalPages;
+
+            if (shouldRebuild) {
+                paginationContainer.innerHTML = '';
+
+                for (let i = 0; i < totalPages; i++) {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.classList.add('pagination-dot');
+                    dot.setAttribute('aria-label', `Ir a página ${i + 1}`);
+
+                    dot.addEventListener('click', () => {
+                        currentIndex = i;
+                        showSlide(currentIndex);
+                        stopAutoSlide();
+                        startAutoSlide();
+                    });
+
+                    paginationContainer.appendChild(dot);
+                }
+
+                setUniformTestimonialHeights();
+            }
+
             updatePagination();
         };
 
+        const applySliderLayout = (requestedItemsPerView = calculateItemsPerView()) => {
+            itemsPerView = requestedItemsPerView;
+            totalPages = Math.max(1, Math.ceil(totalItems / itemsPerView));
+            ensurePaginationDots();
+            currentIndex = Math.min(currentIndex, getMaxIndex());
+            showSlide(currentIndex);
+        };
+
+        const scheduleLayoutUpdate = debounce(() => {
+            applySliderLayout();
+        }, 150);
+
+        const registerMediaListener = (mediaQuery, handler) => {
+            if (!mediaQuery) return () => {};
+
+            if (typeof mediaQuery.addEventListener === 'function') {
+                mediaQuery.addEventListener('change', handler);
+                return () => mediaQuery.removeEventListener('change', handler);
+            }
+
+            mediaQuery.addListener(handler);
+            return () => mediaQuery.removeListener(handler);
+        };
+
+        const handleBreakpointChange = () => {
+            scheduleLayoutUpdate();
+        };
+
+        cleanupCallbacks.push(registerMediaListener(desktopQuery, handleBreakpointChange));
+        cleanupCallbacks.push(registerMediaListener(tabletQuery, handleBreakpointChange));
+
+        const throttledResizeHandler = throttle(() => {
+            const computedItemsPerView = calculateItemsPerView();
+            if (computedItemsPerView !== itemsPerView) {
+                applySliderLayout(computedItemsPerView);
+                setUniformTestimonialHeights();
+            }
+        }, 200);
+
+        window.addEventListener('resize', throttledResizeHandler);
+        cleanupCallbacks.push(() => window.removeEventListener('resize', throttledResizeHandler));
+
         const nextSlide = () => {
-            const maxIndex = 3;
+            const maxIndex = getMaxIndex();
             currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
             showSlide(currentIndex);
         };
-        
+
         const prevSlide = () => {
-            const maxIndex = 3;
+            const maxIndex = getMaxIndex();
             currentIndex = currentIndex <= 0 ? maxIndex : currentIndex - 1;
             showSlide(currentIndex);
         };
 
         const startAutoSlide = () => {
+            if (intervalId || !isSliderVisible || totalPages <= 1) return;
             intervalId = setInterval(nextSlide, 7000);
         };
 
         const stopAutoSlide = () => {
+            if (!intervalId) return;
             clearInterval(intervalId);
+            intervalId = null;
         };
 
-        nextButton.addEventListener('click', () => {
-            nextSlide();
-            stopAutoSlide();
-            startAutoSlide();
-        });
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                nextSlide();
+                stopAutoSlide();
+                startAutoSlide();
+            });
+        }
 
-        prevButton.addEventListener('click', () => {
-            prevSlide();
-            stopAutoSlide();
-            startAutoSlide();
-        });
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                prevSlide();
+                stopAutoSlide();
+                startAutoSlide();
+            });
+        }
 
-        // RESIZE LISTENER PASIVO
-        window.addEventListener('resize', () => {
-            updateSlidesPerView();
-            showSlide(currentIndex);
-        }, { passive: true });
-        
-        updateSlidesPerView();
-        startAutoSlide();
+        if ('IntersectionObserver' in window) {
+            sliderObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.target !== slider) return;
+                    isSliderVisible = entry.isIntersecting;
+
+                    if (isSliderVisible) {
+                        startAutoSlide();
+                    } else {
+                        stopAutoSlide();
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            sliderObserver.observe(slider);
+            cleanupCallbacks.push(() => sliderObserver && sliderObserver.disconnect());
+        } else {
+            startAutoSlide();
+        }
+
+        applySliderLayout(calculateItemsPerView());
+        if (!intervalId && isSliderVisible && totalPages > 1) {
+            startAutoSlide();
+        }
+
+        const cleanup = () => {
+            stopAutoSlide();
+            if (layoutUpdateTimeoutId) {
+                clearTimeout(layoutUpdateTimeoutId);
+                layoutUpdateTimeoutId = null;
+            }
+            cleanupCallbacks.forEach(fn => {
+                if (typeof fn === 'function') {
+                    fn();
+                }
+            });
+            cleanupCallbacks.length = 0;
+            window.removeEventListener('pagehide', cleanup);
+            window.removeEventListener('beforeunload', cleanup);
+        };
+
+        window.addEventListener('pagehide', cleanup, { once: true });
+        window.addEventListener('beforeunload', cleanup, { once: true });
     }
+
+    setUniformTestimonialHeights();
+    window.addEventListener('load', setUniformTestimonialHeights);
 
     // GOOGLE MAPS LAZY LOAD AUTOMÁTICO CON INTERSECTION OBSERVER
     const initLazyMaps = () => {
@@ -167,39 +378,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     };
-
-    // COOKIE CONSENT BANNER
-    const cookieBanner = document.getElementById('cookie-banner');
-    const acceptCookiesBtn = document.getElementById('accept-cookies-btn');
-
-    if (cookieBanner && acceptCookiesBtn) {
-        if (!getCookie('cookies_accepted')) {
-            setTimeout(() => {
-                cookieBanner.classList.add('active');
-            }, 1500);
-        }
-
-        acceptCookiesBtn.addEventListener('click', () => {
-            setCookie('cookies_accepted', 'true', 365);
-            cookieBanner.style.transform = 'translateY(100%)';
-        });
-    }
-
-    function setCookie(name, value, days) {
-        const date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-        document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/`;
-    }
-
-    function getCookie(name) {
-        const nameEQ = `${name}=`;
-        const ca = document.cookie.split(';');
-        for(let i = 0; i < ca.length; i++) {
-            let c = ca[i].trim();
-            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
-        }
-        return null;
-    }
 
     // Inicializar lazy load de mapas
     initLazyMaps();
