@@ -239,3 +239,48 @@
 /* Guardarraíles: no tocar estrellas ni precios */
 .star-rating, .star-rating svg, .star-rating img { /* sin cambios */ }
 .tarifa-card { /* sin cambios */ }
+
+/* ===== SOLO ESCRITORIO ===== */
+@media (min-width:1024px){
+  /* 1) Iconos de las cards de contenido a 48px (excluye tarifas) */
+  .section .card:not(.tarifa-card) .icon,
+  .specialization-card .icon,
+  .value-card .icon,
+  .benefit-card .icon,
+  #enfoque-diferente .card .icon,
+  #como-trabajo .card .icon {
+    width: 48px;
+    height: 48px;
+    vertical-align: middle;
+    display: block;
+    margin-inline: auto; /* centrados en desktop */
+  }
+
+  /* Mantener tarifas (checks) tal cual */
+  .tarifa-card .icon { width: inherit; height: inherit; }
+
+  /* 2) Reseñas/testimonios: más altas que anchas (≈ 3/4) */
+  .testimonials-section .testimonial-card,
+  .reviews .testimonial-card,
+  .opiniones .review-card,
+  .swiper-slide .testimonial-card {
+    aspect-ratio: 3 / 4;          /* más alto que ancho */
+    min-height: 360px;             /* reserva de espacio para evitar CLS */
+    background: #FFFFFF;           /* mantenemos fondo blanco */
+    border-left: 4px solid #6B7A99;/* ribete coherente */
+    border-radius: var(--card-radius,16px);
+    box-shadow: var(--card-shadow,0 2px 10px rgba(0,0,0,.06));
+    padding: var(--card-padding,1rem 1.25rem);
+  }
+
+  /* Si el carrusel necesita altura fija para no “saltar” al montar slides */
+  .testimonials-section .carousel,
+  .testimonials-carousel {
+    min-height: 380px; /* ajusta si una tarjeta muy larga lo requiere */
+  }
+}
+
+/* Guardarraíles: no tocar footer ni estrellas */
+footer .icon,
+.star-rating .icon, .star-rating svg, .star-rating img { width: inherit; height: inherit; }
+
