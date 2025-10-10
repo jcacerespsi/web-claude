@@ -25,24 +25,6 @@
     }
 }
 
-/* ===== Sección Sesiones justas y necesarias + Comparativa ===== */
-#online-brief .sj-grid{ display:grid; gap:24px; grid-template-columns:1fr; }
-@media (min-width:768px){ #online-brief .sj-grid{ grid-template-columns:1fr 1fr; } }
-
-#online-brief .sj-card,
-#online-brief .compare-card,
-#online-brief .info-card{
-  background:#fff; border-left:4px solid #6B7A99;
-  border-radius:var(--card-radius,16px);
-  box-shadow:var(--card-shadow,0 2px 10px rgba(0,0,0,.06));
-  padding:1rem 1.25rem;
-}
-
-#online-brief .compare{ margin-top: 24px; }
-#online-brief .compare-grid{ display:grid; gap:24px; grid-template-columns:1fr; }
-@media (min-width:768px){ #online-brief .compare-grid{ grid-template-columns:1fr 1fr; } }
-#online-brief .note{ font-size:.92rem; opacity:.85; margin-top:.5rem; }
-
 /* ===== Alternancia de fondos (solo esta landing) ===== */
 .bg-sand { background: #F1F0EC; }
 .bg-porcelain { background: #F9F9F7; }
@@ -57,31 +39,6 @@
 
 /* Anti-CLS: cabeceras con altura estable en desktop */
 @media (min-width:1024px){
-  #online-brief .section-header { min-height: 110px; }
   #faq .section-header { min-height: 90px; }
-}
-
-/* ——— Online: tarjetas “Sesiones justas y necesarias” ——— */
-#online-brief .card-title {
-  margin-bottom: 20px;
-}
-
-#online-brief .card ul {
-  margin-top: 8px;
-  padding-left: 1.15em;
-}
-
-/* ——— Heading “Enfoques” ——— */
-#enfoques-title {
-  text-align: center;
-  margin-top: 56px;   /* más aire por arriba */
-  margin-bottom: 28px;/* y por abajo */
-  line-height: 1.25;  /* legible en dos líneas si se parte */
-}
-
-/* Si el título de “Enfoques” está dentro de .section-title, afinamos solo aquí */
-#enfoques-title.section-title {
-  margin-top: 64px;
-  margin-bottom: 32px;
 }
 
