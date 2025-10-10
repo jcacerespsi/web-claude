@@ -26,9 +26,6 @@
 }
 
 /* ===== Sección Sesiones justas y necesarias + Comparativa ===== */
-#sesiones-justas.section-muted{ background: var(--section-muted, #f8f9fa); }
-@media (min-width:1024px){ #sesiones-justas .section-header{ min-height:110px; } } /* anti-CLS */
-
 #sesiones-justas .sj-grid{ display:grid; gap:24px; grid-template-columns:1fr; }
 @media (min-width:768px){ #sesiones-justas .sj-grid{ grid-template-columns:1fr 1fr; } }
 
@@ -57,3 +54,27 @@
 }
 #faqs-online .faq[open] summary::after{ content:"▴"; }
 #faqs-online .faq .faq-body{ padding:.5rem 0 1rem; }
+
+/* ===== Alternancia de fondos (solo esta landing) ===== */
+.bg-sand { background: #F1F0EC; }
+.bg-porcelain { background: #F9F9F7; }
+
+/* Espaciado de títulos coherente con la web */
+.section-header h2 {
+  margin-bottom: var(--space-600, 1.25rem);
+}
+.section-header .section-subtitle {
+  margin-top: var(--space-200, .5rem);
+}
+
+/* “Enfoques: ¿qué cambia realmente?” centrado + aire */
+#sesiones-justas .compare > h3 {
+  text-align: center;
+  margin: var(--space-600, 1.25rem) 0 var(--space-500, 1rem);
+}
+
+/* Anti-CLS: cabeceras con altura estable en desktop */
+@media (min-width:1024px){
+  #sesiones-justas .section-header { min-height: 110px; }
+  #faqs-online .section-header { min-height: 90px; }
+}
