@@ -24,3 +24,36 @@
         min-height: 120px;
     }
 }
+
+/* ===== Sección Sesiones justas y necesarias + Comparativa ===== */
+#sesiones-justas.section-muted{ background: var(--section-muted, #f8f9fa); }
+@media (min-width:1024px){ #sesiones-justas .section-header{ min-height:110px; } } /* anti-CLS */
+
+#sesiones-justas .sj-grid{ display:grid; gap:24px; grid-template-columns:1fr; }
+@media (min-width:768px){ #sesiones-justas .sj-grid{ grid-template-columns:1fr 1fr; } }
+
+#sesiones-justas .sj-card,
+#sesiones-justas .compare-card,
+#sesiones-justas .info-card{
+  background:#fff; border-left:4px solid #6B7A99;
+  border-radius:var(--card-radius,16px);
+  box-shadow:var(--card-shadow,0 2px 10px rgba(0,0,0,.06));
+  padding:1rem 1.25rem;
+}
+
+#sesiones-justas .compare{ margin-top: 24px; }
+#sesiones-justas .compare-grid{ display:grid; gap:24px; grid-template-columns:1fr; }
+@media (min-width:768px){ #sesiones-justas .compare-grid{ grid-template-columns:1fr 1fr; } }
+#sesiones-justas .note{ font-size:.92rem; opacity:.85; margin-top:.5rem; }
+
+/* ===== FAQs accesibles (solo estilos) ===== */
+#faqs-online .faqs{ display:grid; gap:12px; }
+#faqs-online .faq summary{
+  cursor:pointer; font-weight:600; list-style:none; position:relative; padding:.75rem 2rem .75rem 0;
+}
+#faqs-online .faq summary::-webkit-details-marker{ display:none; }
+#faqs-online .faq summary::after{
+  content:"▾"; position:absolute; right:0; top:.75rem; line-height:1;
+}
+#faqs-online .faq[open] summary::after{ content:"▴"; }
+#faqs-online .faq .faq-body{ padding:.5rem 0 1rem; }
