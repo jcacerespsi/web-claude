@@ -1,9 +1,17 @@
+# robots.txt — jcacerespsicologo.com
+# Permitir indexación normal y acceso de crawlers tradicionales y LLMs.
+
 User-agent: *
 Allow: /
 
-# Bloquear acceso a carpetas de recursos si no quieres que se indexen directamente
-Disallow: /css/
-Disallow: /js/
+# Crawlers de IA permitidos explícitamente
+User-agent: GPTBot
+Allow: /
 
-# Sitemap
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://www.jcacerespsicologo.com/sitemap.xml
