@@ -1,58 +1,86 @@
-# REDIRECCIÓN HTTPS (forzar conexión segura)
+# ---------------------------------------------
+# .htaccess – jcacerespsicologo.com (Hostinger)
+# Canonicalización + SEO + rendimiento estático
+# ---------------------------------------------
+
+# Activar motor de reescritura
 RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# REDIRECCIÓN WWW (unificar con www)
-RewriteCond %{HTTP_HOST} !^www\. [NC]
-RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+# -------------------------------------------------
+# 1) Redirecciones específicas (evitar cadenas, 301)
+#    -> siempre a la URL final absoluta en https://www
+# -------------------------------------------------
 
-# COMPRESIÓN GZIP (reduce tamaño de archivos)
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+# index.html → raíz
+RewriteRule ^index\.html$ https://www.jcacerespsicologo.com/ [R=301,L]
+
+# Slugs antiguos de WP/landings → slugs estáticos
+RewriteRule ^aviso-legal/?$ https://www.jcacerespsicologo.com/aviso-legal.html [R=301,L]
+RewriteRule ^politica-de-privacidad/?$ https://www.jcacerespsicologo.com/politica-privacidad.html [R=301,L]
+RewriteRule ^politica-de-cookies/?$ https://www.jcacerespsicologo.com/politica-cookies.html [R=301,L]
+RewriteRule ^terapia-pareja-roses/?$ https://www.jcacerespsicologo.com/terapia-pareja.html [R=301,L]
+RewriteRule ^terapia-breve-online/?$ https://www.jcacerespsicologo.com/terapia-online.html [R=301,L]
+
+# Endpoints/archivos del sitio antiguo → 410 (Gone)
+RewriteRule ^wp-json/elementskit/v1/ - [G,L]
+RewriteRule ^feed/?$ - [G,L]
+RewriteRule ^category/ - [G,L]
+RewriteRule ^tag/ - [G,L]
+RewriteRule ^2022/07/28/hello-world/?$ - [G,L]
+
+# -------------------------------------------------
+# 2) Canonicalización global: HTTPS + WWW
+#    (solo si no se cumplió una regla anterior)
+# -------------------------------------------------
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} !^www\.jcacerespsicologo\.com$ [NC]
+RewriteRule ^(.*)$ https://www.jcacerespsicologo.com/$1 [R=301,L]
+
+# -------------------------------------------------
+# 3) Rendimiento (compresión y caché)
+# -------------------------------------------------
+
+# Compresión Brotli (si disponible)
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/plain text/html text/xml text/css application/javascript application/json image/svg+xml
 </IfModule>
 
-# CACHE DEL NAVEGADOR (mejora velocidad en visitas repetidas)
+# Compresión GZIP (fallback)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# Caché en navegador
 <IfModule mod_expires.c>
   ExpiresActive On
-  
-  # Imágenes - 1 año
-  ExpiresByType image/jpeg "access plus 1 year"
+  # HTML: sin cachear duro para evitar servir contenido obsoleto
+  ExpiresByType text/html "access plus 0 seconds"
+  # Estáticos versionados (mejor con querystring/hash en archivos)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/json "access plus 1 day"
+  ExpiresByType image/avif "access plus 1 year"
   ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
-  
-  # CSS y JavaScript - 1 mes
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType application/javascript "access plus 1 month"
-  
-  # HTML - 1 día
-  ExpiresByType text/html "access plus 1 day"
-  
-  # Fuentes
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
-# SEGURIDAD - Headers de protección
+# -------------------------------------------------
+# 4) Cabeceras de seguridad básicas
+# -------------------------------------------------
 <IfModule mod_headers.c>
-  # Prevenir clickjacking
-  Header always set X-Frame-Options "SAMEORIGIN"
-  
-  # Prevenir XSS
-  Header always set X-XSS-Protection "1; mode=block"
-  
-  # Prevenir MIME sniffing
   Header always set X-Content-Type-Options "nosniff"
-  
-  # Referrer Policy
+  Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  # HSTS (6 meses). Actívalo solo si el sitio funciona 100% en HTTPS
+  Header always set Strict-Transport-Security "max-age=15552000"
 </IfModule>
 
-# BLOQUEAR ACCESO A ARCHIVOS SENSIBLES
-<FilesMatch "^\.">
-  Order allow,deny
-  Deny from all
-</FilesMatch>
-
-# PÁGINA DE ERROR 404 personalizada (opcional)
+# -------------------------------------------------
+# 5) Errores
+# -------------------------------------------------
+# 404 personalizado (sirve la home; 410 seguirá devolviendo estado 410)
 ErrorDocument 404 /index.html
